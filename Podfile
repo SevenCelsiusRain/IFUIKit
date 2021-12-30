@@ -9,6 +9,14 @@ target 'IFAlert' do
 
 end
 
+target 'IFTableView' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'MJRefresh'
+
+end
+
 
 target 'IFHUD' do
   # Comment the next line if you don't want to use dynamic frameworks

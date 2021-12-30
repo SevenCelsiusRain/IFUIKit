@@ -13,16 +13,22 @@
 		7FD34CD3277DB77800FFD2D1 /* IFUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CD2277DB77800FFD2D1 /* IFUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD34CE1277DB8D700FFD2D1 /* IFHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CE0277DB8D700FFD2D1 /* IFHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD34CED277DB99000FFD2D1 /* IFToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CEC277DB99000FFD2D1 /* IFToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FD34CF9277DB9A300FFD2D1 /* IFEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CF8277DB9A300FFD2D1 /* IFEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD34D05277DBA2100FFD2D1 /* IFAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34D04277DBA2100FFD2D1 /* IFAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FD34D11277DBB9600FFD2D1 /* IFTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34D10277DBB9600FFD2D1 /* IFTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FD34D18277DC66C00FFD2D1 /* IFBaseTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34D16277DC66C00FFD2D1 /* IFBaseTableView.h */; };
+		7FD34D19277DC66C00FFD2D1 /* IFBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD34D17277DC66C00FFD2D1 /* IFBaseTableView.m */; };
+		7FD34D1C277DD14600FFD2D1 /* IFEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34D1A277DD14600FFD2D1 /* IFEmptyView.h */; };
+		7FD34D1D277DD14600FFD2D1 /* IFEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD34D1B277DD14600FFD2D1 /* IFEmptyView.m */; };
+		7FD34D20277DD8B200FFD2D1 /* UIView+IFEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34D1E277DD8B200FFD2D1 /* UIView+IFEmptyView.h */; };
+		7FD34D21277DD8B200FFD2D1 /* UIView+IFEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD34D1F277DD8B200FFD2D1 /* UIView+IFEmptyView.m */; };
 		949E6874611EFC805DDAFDC5 /* Pods_IFToast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */; };
+		9BEF92D65A1FF9E45449714C /* Pods_IFTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CF81754CF54DE300241232 /* Pods_IFTableView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2487BD6159C514FF553C1B4C /* Pods_IFUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B679117F778820075CF00F1 /* Pods-IFHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFHUD.debug.xcconfig"; path = "Target Support Files/Pods-IFHUD/Pods-IFHUD.debug.xcconfig"; sourceTree = "<group>"; };
 		381E4A86509616C2FDB55A33 /* Pods-IFHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFHUD.release.xcconfig"; path = "Target Support Files/Pods-IFHUD/Pods-IFHUD.release.xcconfig"; sourceTree = "<group>"; };
+		42CF81754CF54DE300241232 /* Pods_IFTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		579D059C990B55DD18E8F03F /* Pods-IFToast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFToast.debug.xcconfig"; path = "Target Support Files/Pods-IFToast/Pods-IFToast.debug.xcconfig"; sourceTree = "<group>"; };
 		5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61785BB7F1985944E553CA90 /* Pods-IFUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFUIKit.release.xcconfig"; path = "Target Support Files/Pods-IFUIKit/Pods-IFUIKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -34,15 +40,21 @@
 		7FD34CEA277DB99000FFD2D1 /* IFToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IFToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD34CEC277DB99000FFD2D1 /* IFToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFToast.h; sourceTree = "<group>"; };
 		7FD34CF6277DB9A300FFD2D1 /* IFEmptyView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IFEmptyView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FD34CF8277DB9A300FFD2D1 /* IFEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFEmptyView.h; sourceTree = "<group>"; };
 		7FD34D02277DBA2100FFD2D1 /* IFAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IFAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD34D04277DBA2100FFD2D1 /* IFAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFAlert.h; sourceTree = "<group>"; };
 		7FD34D0E277DBB9600FFD2D1 /* IFTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IFTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FD34D10277DBB9600FFD2D1 /* IFTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFTableView.h; sourceTree = "<group>"; };
+		7FD34D16277DC66C00FFD2D1 /* IFBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFBaseTableView.h; sourceTree = "<group>"; };
+		7FD34D17277DC66C00FFD2D1 /* IFBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFBaseTableView.m; sourceTree = "<group>"; };
+		7FD34D1A277DD14600FFD2D1 /* IFEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFEmptyView.h; sourceTree = "<group>"; };
+		7FD34D1B277DD14600FFD2D1 /* IFEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFEmptyView.m; sourceTree = "<group>"; };
+		7FD34D1E277DD8B200FFD2D1 /* UIView+IFEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IFEmptyView.h"; sourceTree = "<group>"; };
+		7FD34D1F277DD8B200FFD2D1 /* UIView+IFEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IFEmptyView.m"; sourceTree = "<group>"; };
+		8499AA856930E43EB5AAD28E /* Pods-IFTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFTableView.debug.xcconfig"; path = "Target Support Files/Pods-IFTableView/Pods-IFTableView.debug.xcconfig"; sourceTree = "<group>"; };
 		93A05486052730B8BBFE655B /* Pods_IFAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE30310E902F45092203D0 /* Pods-IFToast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFToast.release.xcconfig"; path = "Target Support Files/Pods-IFToast/Pods-IFToast.release.xcconfig"; sourceTree = "<group>"; };
 		D65AE329A404CE59FC16BC41 /* Pods-IFUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFUIKit.debug.xcconfig"; path = "Target Support Files/Pods-IFUIKit/Pods-IFUIKit.debug.xcconfig"; sourceTree = "<group>"; };
 		DAC15374956313D9CB6380FC /* Pods_IFHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F121B5CE63531C2831CB3B67 /* Pods-IFTableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFTableView.release.xcconfig"; path = "Target Support Files/Pods-IFTableView/Pods-IFTableView.release.xcconfig"; sourceTree = "<group>"; };
 		FC8A8ED5425CE8B020982D30 /* Pods-IFAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFAlert.release.xcconfig"; path = "Target Support Files/Pods-IFAlert/Pods-IFAlert.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BEF92D65A1FF9E45449714C /* Pods_IFTableView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +116,7 @@
 				DAC15374956313D9CB6380FC /* Pods_IFHUD.framework */,
 				5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */,
 				2487BD6159C514FF553C1B4C /* Pods_IFUIKit.framework */,
+				42CF81754CF54DE300241232 /* Pods_IFTableView.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,7 +163,10 @@
 		7FD34CF7277DB9A300FFD2D1 /* IFEmptyView */ = {
 			isa = PBXGroup;
 			children = (
-				7FD34CF8277DB9A300FFD2D1 /* IFEmptyView.h */,
+				7FD34D1A277DD14600FFD2D1 /* IFEmptyView.h */,
+				7FD34D1B277DD14600FFD2D1 /* IFEmptyView.m */,
+				7FD34D1E277DD8B200FFD2D1 /* UIView+IFEmptyView.h */,
+				7FD34D1F277DD8B200FFD2D1 /* UIView+IFEmptyView.m */,
 			);
 			path = IFEmptyView;
 			sourceTree = "<group>";
@@ -165,7 +182,8 @@
 		7FD34D0F277DBB9600FFD2D1 /* IFTableView */ = {
 			isa = PBXGroup;
 			children = (
-				7FD34D10277DBB9600FFD2D1 /* IFTableView.h */,
+				7FD34D16277DC66C00FFD2D1 /* IFBaseTableView.h */,
+				7FD34D17277DC66C00FFD2D1 /* IFBaseTableView.m */,
 			);
 			path = IFTableView;
 			sourceTree = "<group>";
@@ -194,6 +212,8 @@
 				C2AE30310E902F45092203D0 /* Pods-IFToast.release.xcconfig */,
 				D65AE329A404CE59FC16BC41 /* Pods-IFUIKit.debug.xcconfig */,
 				61785BB7F1985944E553CA90 /* Pods-IFUIKit.release.xcconfig */,
+				8499AA856930E43EB5AAD28E /* Pods-IFTableView.debug.xcconfig */,
+				F121B5CE63531C2831CB3B67 /* Pods-IFTableView.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -229,7 +249,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FD34CF9277DB9A300FFD2D1 /* IFEmptyView.h in Headers */,
+				7FD34D1C277DD14600FFD2D1 /* IFEmptyView.h in Headers */,
+				7FD34D20277DD8B200FFD2D1 /* UIView+IFEmptyView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +266,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FD34D11277DBB9600FFD2D1 /* IFTableView.h in Headers */,
+				7FD34D18277DC66C00FFD2D1 /* IFBaseTableView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +371,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FD34D12277DBB9600FFD2D1 /* Build configuration list for PBXNativeTarget "IFTableView" */;
 			buildPhases = (
+				5A3CC3B49ADD303B12E52219 /* [CP] Check Pods Manifest.lock */,
 				7FD34D09277DBB9600FFD2D1 /* Headers */,
 				7FD34D0A277DBB9600FFD2D1 /* Sources */,
 				7FD34D0B277DBB9600FFD2D1 /* Frameworks */,
@@ -462,6 +484,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5A3CC3B49ADD303B12E52219 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IFTableView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		87D3C9D64582B8F58A0843BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +622,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FD34D21277DD8B200FFD2D1 /* UIView+IFEmptyView.m in Sources */,
+				7FD34D1D277DD14600FFD2D1 /* IFEmptyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FD34D19277DC66C00FFD2D1 /* IFBaseTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,6 +1093,7 @@
 		};
 		7FD34D13277DBB9600FFD2D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8499AA856930E43EB5AAD28E /* Pods-IFTableView.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1078,6 +1126,7 @@
 		};
 		7FD34D14277DBB9600FFD2D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F121B5CE63531C2831CB3B67 /* Pods-IFTableView.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

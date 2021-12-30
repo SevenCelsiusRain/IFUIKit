@@ -1,24 +1,28 @@
 PODS:
   - MBProgressHUD (1.2.0)
+  - MJRefresh (3.7.5)
   - SCLAlertView-Objective-C (1.2.0)
   - Toast (4.0.0)
 
 DEPENDENCIES:
   - MBProgressHUD (~> 1.2.0)
+  - MJRefresh
   - SCLAlertView-Objective-C
   - Toast (~> 4.0.0)
 
 SPEC REPOS:
   trunk:
     - MBProgressHUD
+    - MJRefresh
     - SCLAlertView-Objective-C
     - Toast
 
 SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   SCLAlertView-Objective-C: 84f12f66d779dadad7f293e5e8b7697ba4254ee0
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: aeb0b285792cbde66bb5ae010a92cab4caf50552
+PODFILE CHECKSUM: e3eb2a30c325c0d94bc1b691ee95d4e9456cc273
 
 COCOAPODS: 1.11.2
