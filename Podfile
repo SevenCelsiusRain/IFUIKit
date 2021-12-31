@@ -6,6 +6,7 @@ target 'IFAlert' do
   use_frameworks!
 
   pod 'SCLAlertView-Objective-C'
+  pod 'Masonry'
 
 end
 
@@ -32,6 +33,13 @@ target 'IFToast' do
   use_frameworks!
 
   pod 'Toast', '~> 4.0.0'
+
+end
+
+target 'IFEmptyView' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Masonry'
 
 end
 
