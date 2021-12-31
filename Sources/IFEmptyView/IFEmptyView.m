@@ -61,8 +61,58 @@
     [self addSubview:self.leftButton];
     [self addSubview:self.rightButton];
     [self addSubview:self.infoLabel];
+    self.leftButton.hidden = YES;
+    self.centerButton.hidden = YES;
+    self.rightButton.hidden = YES;
     
-    [self.imageView mas]
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(250, 187))；
+    }];
+    
+    [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.imageView.mas_bottom).offset(27);
+        make.centerX.equalTo(self);
+    }];
+    
+    [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.infoLabel.mas_bottom).offset(25);
+        make.size.mas_equalTo(CGSizeMake(110, 40));
+        make.right.equalTo(self.mas_centerX).offset(-6);
+    }];
+    
+    [self.rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.leftButton.mas_top);
+        make.size.equalTo(self.leftButton);
+        make.left.equalTo(self.mas_centerX).offset(6);
+    }];
+    
+    [self.centerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.leftButton.mas_top);
+        make.size.mas_equalTo(CGSizeMake(130, 40));
+        make.centerX.equalTo(self);
+    }];
+    
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (self.mas_height > 0) {
+        CGFloat topOffset = self.topPadding;
+        if (topOffset == 0) {
+            topOffset = self.mas_height * 0.3;
+        }
+        [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(top);
+            make.centerX.equalTo(self);
+            make.size.equalTo(CGSizeMake(250, 187));
+        }];
+        CGFloat btnWidth = self.buttonWidth == 0? 110:self.buttonWidth;
+        [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(110, 40));
+        }];
+
+    }
 }
 
 #pragma mark - event handler
@@ -150,5 +200,30 @@
 }
 
 
+#pragma mark - setter
 
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    self.imageView.image = image;
+}
+
+- (void)setTopPadding:(CGFloat)topPadding {
+    _topPadding = topPadding;
+    [self setNeedsDisplay];
+}
+
+- (void)setButtonWidth:(CGFloat)buttonWidth {
+    _buttonWidth = buttonWidth;
+    [self setNeedsDisplay];
+}
+
+- (void)setInfoFont:(UIFont *)infoFont {
+    _infoFont = infoFont;
+    self.infoLabel.font = infoFont;
+}
+
+- (void)setInfoString:(NSString *)infoString {
+    _infoString = infoString;
+    self.infoLabel.text = infoString;
+}
 @end

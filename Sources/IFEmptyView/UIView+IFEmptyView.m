@@ -27,6 +27,7 @@ static char IFEmptyViewKey;
     [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).insets(UIEdgeInsetsZero);
     }];
+    [self bringSubviewToFront:self.emptyView];
     if (emptyViewBlock) {
         emptyViewBlock(self.emptyView);
     }
@@ -38,6 +39,7 @@ static char IFEmptyViewKey;
     [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).insets(UIEdgeInsetsZero);
     }];
+    [self bringSubviewToFront:self.emptyView];
     if (emptyViewBlock) {
         dispatch_async(dispatch_main(), ^{
             emptyViewBlock(self.emptyView);
