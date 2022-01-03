@@ -41,13 +41,13 @@ static char IFEmptyViewKey;
     }];
     [self bringSubviewToFront:self.emptyView];
     if (emptyViewBlock) {
-        dispatch_async(dispatch_main(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             emptyViewBlock(self.emptyView);
         });
     }
     if (operationHandler) {
         self.emptyView.userOperationBlock = ^(NSInteger index) {
-            dispatch_async(dispatch_main(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 operationHandler(index);
             });
         };
