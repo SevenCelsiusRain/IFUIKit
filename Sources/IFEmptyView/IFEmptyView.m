@@ -67,7 +67,7 @@
     
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(250, 187))；
+        make.size.mas_equalTo(CGSizeMake(250, 187));
     }];
     
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -149,7 +149,7 @@
         _infoLabel = [UILabel new];
         _infoLabel.numberOfLines = 0;
         _infoLabel.textColor = UIColor.lightTextColor;
-        _infoLabel.font = [UIFont systemFontOfSize:12` weight:UIFontWeightMedium];
+        _infoLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
         _infoLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _infoLabel;
@@ -159,7 +159,7 @@
     if (!_centerButton) {
         _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _centerButton.layer.borderColor = UIColor.redColor;
+        _centerButton.layer.borderColor = [UIColor redColor].CGColor;
         _centerButton.layer.borderWidth = 1.0;
         _centerButton.layer.cornerRadius = 20;
         _centerButton.clipsToBounds = YES;
@@ -173,7 +173,7 @@
 - (UIButton *)leftButton {
     if (!_leftButton) {
         _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _leftButton.layer.borderColor = UIColor.redColor;
+        _leftButton.layer.borderColor = [UIColor redColor].CGColor;
         _leftButton.layer.borderWidth = 1.0;
         _leftButton.layer.cornerRadius = 20;
         _leftButton.clipsToBounds = YES;
@@ -188,7 +188,7 @@
     if (!_rightButton) {
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightButton.layer.borderColor = UIColor.redColor;
+        _rightButton.layer.borderColor = [UIColor redColor].CGColor;
         _rightButton.layer.borderWidth = 1.0;
         _rightButton.layer.cornerRadius = 20;
         _rightButton.clipsToBounds = YES;
