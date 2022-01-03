@@ -3,6 +3,9 @@ PODS:
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - SCLAlertView-Objective-C (1.2.0)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
   - Toast (4.0.0)
 
 DEPENDENCIES:
@@ -10,6 +13,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.2.0)
   - MJRefresh
   - SCLAlertView-Objective-C
+  - SDWebImage
   - Toast (~> 4.0.0)
 
 SPEC REPOS:
@@ -18,6 +22,7 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - SCLAlertView-Objective-C
+    - SDWebImage
     - Toast
 
 SPEC CHECKSUMS:
@@ -25,8 +30,9 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   SCLAlertView-Objective-C: 84f12f66d779dadad7f293e5e8b7697ba4254ee0
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: f62ece0b335c4c2630cb903c2406f5c27d31e818
+PODFILE CHECKSUM: 850a48397e98a6e5dbfa4cf50665b712dd588c6d
 
 COCOAPODS: 1.11.2

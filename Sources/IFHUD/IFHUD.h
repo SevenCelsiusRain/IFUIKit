@@ -14,5 +14,8 @@ FOUNDATION_EXPORT double IFHUDVersionNumber;
 FOUNDATION_EXPORT const unsigned char IFHUDVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <IFHUD/PublicHeader.h>
+#import <UIKit/UIKit.h>
+#import <IFHUD/IFProgressHUD.h>
+#import <IFHUD/UIViewController+IFHUD.h>
 
 
