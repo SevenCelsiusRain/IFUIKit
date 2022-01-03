@@ -31,7 +31,6 @@
 		7FED491227829B1B00D358E1 /* IFHUDMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED491127829B1B00D358E1 /* IFHUDMacros.h */; };
 		7FED49152782A04700D358E1 /* IFToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED49132782A04700D358E1 /* IFToastView.h */; };
 		7FED49162782A04700D358E1 /* IFToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED49142782A04700D358E1 /* IFToastView.m */; };
-		949E6874611EFC805DDAFDC5 /* Pods_IFToast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */; };
 		9BEF92D65A1FF9E45449714C /* Pods_IFTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CF81754CF54DE300241232 /* Pods_IFTableView.framework */; };
 		CDC2450D1A10ECC251CAA484 /* Pods_IFEmptyView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760054AE564D46A722EDB3B2 /* Pods_IFEmptyView.framework */; };
 /* End PBXBuildFile section */
@@ -42,8 +41,6 @@
 		2B679117F778820075CF00F1 /* Pods-IFHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFHUD.debug.xcconfig"; path = "Target Support Files/Pods-IFHUD/Pods-IFHUD.debug.xcconfig"; sourceTree = "<group>"; };
 		381E4A86509616C2FDB55A33 /* Pods-IFHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFHUD.release.xcconfig"; path = "Target Support Files/Pods-IFHUD/Pods-IFHUD.release.xcconfig"; sourceTree = "<group>"; };
 		42CF81754CF54DE300241232 /* Pods_IFTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		579D059C990B55DD18E8F03F /* Pods-IFToast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFToast.debug.xcconfig"; path = "Target Support Files/Pods-IFToast/Pods-IFToast.debug.xcconfig"; sourceTree = "<group>"; };
-		5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61785BB7F1985944E553CA90 /* Pods-IFUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFUIKit.release.xcconfig"; path = "Target Support Files/Pods-IFUIKit/Pods-IFUIKit.release.xcconfig"; sourceTree = "<group>"; };
 		760054AE564D46A722EDB3B2 /* Pods_IFEmptyView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFEmptyView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		795D119A91BF9E354201EBD5 /* Pods-IFAlert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFAlert.debug.xcconfig"; path = "Target Support Files/Pods-IFAlert/Pods-IFAlert.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +73,6 @@
 		7FED49142782A04700D358E1 /* IFToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFToastView.m; sourceTree = "<group>"; };
 		8499AA856930E43EB5AAD28E /* Pods-IFTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFTableView.debug.xcconfig"; path = "Target Support Files/Pods-IFTableView/Pods-IFTableView.debug.xcconfig"; sourceTree = "<group>"; };
 		93A05486052730B8BBFE655B /* Pods_IFAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2AE30310E902F45092203D0 /* Pods-IFToast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFToast.release.xcconfig"; path = "Target Support Files/Pods-IFToast/Pods-IFToast.release.xcconfig"; sourceTree = "<group>"; };
 		D4A4E53667776783EA61D0EA /* Pods-IFEmptyView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFEmptyView.debug.xcconfig"; path = "Target Support Files/Pods-IFEmptyView/Pods-IFEmptyView.debug.xcconfig"; sourceTree = "<group>"; };
 		D65AE329A404CE59FC16BC41 /* Pods-IFUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFUIKit.debug.xcconfig"; path = "Target Support Files/Pods-IFUIKit/Pods-IFUIKit.debug.xcconfig"; sourceTree = "<group>"; };
 		DAC15374956313D9CB6380FC /* Pods_IFHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				949E6874611EFC805DDAFDC5 /* Pods_IFToast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +136,6 @@
 			children = (
 				93A05486052730B8BBFE655B /* Pods_IFAlert.framework */,
 				DAC15374956313D9CB6380FC /* Pods_IFHUD.framework */,
-				5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */,
 				2487BD6159C514FF553C1B4C /* Pods_IFUIKit.framework */,
 				42CF81754CF54DE300241232 /* Pods_IFTableView.framework */,
 				760054AE564D46A722EDB3B2 /* Pods_IFEmptyView.framework */,
@@ -247,8 +241,6 @@
 				FC8A8ED5425CE8B020982D30 /* Pods-IFAlert.release.xcconfig */,
 				2B679117F778820075CF00F1 /* Pods-IFHUD.debug.xcconfig */,
 				381E4A86509616C2FDB55A33 /* Pods-IFHUD.release.xcconfig */,
-				579D059C990B55DD18E8F03F /* Pods-IFToast.debug.xcconfig */,
-				C2AE30310E902F45092203D0 /* Pods-IFToast.release.xcconfig */,
 				D65AE329A404CE59FC16BC41 /* Pods-IFUIKit.debug.xcconfig */,
 				61785BB7F1985944E553CA90 /* Pods-IFUIKit.release.xcconfig */,
 				8499AA856930E43EB5AAD28E /* Pods-IFTableView.debug.xcconfig */,
@@ -361,7 +353,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FD34CEE277DB99100FFD2D1 /* Build configuration list for PBXNativeTarget "IFToast" */;
 			buildPhases = (
-				EFB4CE3FA7158FDAB2C364EA /* [CP] Check Pods Manifest.lock */,
 				7FD34CE5277DB99000FFD2D1 /* Headers */,
 				7FD34CE6277DB99000FFD2D1 /* Sources */,
 				7FD34CE7277DB99000FFD2D1 /* Frameworks */,
@@ -636,28 +627,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-IFAlert-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFB4CE3FA7158FDAB2C364EA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IFToast-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -972,7 +941,6 @@
 		};
 		7FD34CEF277DB99100FFD2D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 579D059C990B55DD18E8F03F /* Pods-IFToast.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1005,7 +973,6 @@
 		};
 		7FD34CF0277DB99100FFD2D1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2AE30310E902F45092203D0 /* Pods-IFToast.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

@@ -43,14 +43,14 @@ static char IFEmptyViewKey;
     if (emptyViewBlock) {
         dispatch_async(dispatch_main(), ^{
             emptyViewBlock(self.emptyView);
-        })
+        });
     }
     if (operationHandler) {
         self.emptyView.userOperationBlock = ^(NSInteger index) {
             dispatch_async(dispatch_main(), ^{
                 operationHandler(index);
-            })
-        }
+            });
+        };
     }
 }
 

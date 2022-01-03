@@ -8,8 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "IFEmptyView.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 typedef void(^IFEmptyViewBlock) (IFEmptyView *emptyView);
 typedef void (^IFUserOperationHandler)(NSInteger index);
 
@@ -33,4 +31,3 @@ typedef void (^IFUserOperationHandler)(NSInteger index);
 
 @end
 
-NS_ASSUME_NONNULL_END
