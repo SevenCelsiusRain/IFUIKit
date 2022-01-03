@@ -15,10 +15,10 @@ FOUNDATION_EXPORT const unsigned char IFUIKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <IFUIKit/PublicHeader.h>
 
-#import <IFUIKit/IFHUD.h>
-#import <IFUIKit/IFToastView.h>
-#import <IFUIKit/IFEmpty.h>
-#import <IFUIKit/IFAlertController.h>
-#import <IFUIKit/IFBaseTableView.h>
+#import <IFHUD/IFHUD.h>
+#import <IFToast/IFToastView.h>
+#import <IFEmptyView/IFEmpty.h>
+#import <IFAlert/IFAlertController.h>
+#import <IFTableView/IFBaseTableView.h>
 
 
