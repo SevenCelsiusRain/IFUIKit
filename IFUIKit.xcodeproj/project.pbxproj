@@ -21,6 +21,7 @@
 		7FD34D21277DD8B200FFD2D1 /* UIView+IFEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD34D1F277DD8B200FFD2D1 /* UIView+IFEmptyView.m */; };
 		7FD34D24277EB3ED00FFD2D1 /* IFAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34D22277EB3ED00FFD2D1 /* IFAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD34D25277EB3ED00FFD2D1 /* IFAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD34D23277EB3ED00FFD2D1 /* IFAlertController.m */; };
+		7FE9B2E32782ED360038EE37 /* IFEmpty.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FE9B2E22782ED360038EE37 /* IFEmpty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FED490527828AAE00D358E1 /* IFProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED490327828AAE00D358E1 /* IFProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FED490627828AAE00D358E1 /* IFProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED490427828AAE00D358E1 /* IFProgressHUD.m */; };
 		7FED4909278290D700D358E1 /* UIViewController+IFHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED4907278290D700D358E1 /* UIViewController+IFHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +30,7 @@
 		7FED490F278298FA00D358E1 /* UIView+IFHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED490D278298FA00D358E1 /* UIView+IFHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FED4910278298FA00D358E1 /* UIView+IFHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED490E278298FA00D358E1 /* UIView+IFHUD.m */; };
 		7FED491227829B1B00D358E1 /* IFHUDMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED491127829B1B00D358E1 /* IFHUDMacros.h */; };
-		7FED49152782A04700D358E1 /* IFToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED49132782A04700D358E1 /* IFToastView.h */; };
+		7FED49152782A04700D358E1 /* IFToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED49132782A04700D358E1 /* IFToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FED49162782A04700D358E1 /* IFToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED49142782A04700D358E1 /* IFToastView.m */; };
 		9BEF92D65A1FF9E45449714C /* Pods_IFTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CF81754CF54DE300241232 /* Pods_IFTableView.framework */; };
 		CDC2450D1A10ECC251CAA484 /* Pods_IFEmptyView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760054AE564D46A722EDB3B2 /* Pods_IFEmptyView.framework */; };
@@ -61,6 +62,7 @@
 		7FD34D1F277DD8B200FFD2D1 /* UIView+IFEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IFEmptyView.m"; sourceTree = "<group>"; };
 		7FD34D22277EB3ED00FFD2D1 /* IFAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFAlertController.h; sourceTree = "<group>"; };
 		7FD34D23277EB3ED00FFD2D1 /* IFAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFAlertController.m; sourceTree = "<group>"; };
+		7FE9B2E22782ED360038EE37 /* IFEmpty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFEmpty.h; sourceTree = "<group>"; };
 		7FED490327828AAE00D358E1 /* IFProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFProgressHUD.h; sourceTree = "<group>"; };
 		7FED490427828AAE00D358E1 /* IFProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFProgressHUD.m; sourceTree = "<group>"; };
 		7FED4907278290D700D358E1 /* UIViewController+IFHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IFHUD.h"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		7FD34CF7277DB9A300FFD2D1 /* IFEmptyView */ = {
 			isa = PBXGroup;
 			children = (
+				7FE9B2E22782ED360038EE37 /* IFEmpty.h */,
 				7FD34D1A277DD14600FFD2D1 /* IFEmptyView.h */,
 				7FD34D1B277DD14600FFD2D1 /* IFEmptyView.m */,
 				7FD34D1E277DD8B200FFD2D1 /* UIView+IFEmptyView.h */,
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD34D1C277DD14600FFD2D1 /* IFEmptyView.h in Headers */,
+				7FE9B2E32782ED360038EE37 /* IFEmpty.h in Headers */,
 				7FD34D20277DD8B200FFD2D1 /* UIView+IFEmptyView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,7 +832,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -861,7 +865,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -894,7 +898,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFHUD;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -927,7 +931,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFHUD;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -959,7 +963,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFToast;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -991,7 +995,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFToast;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1024,7 +1028,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFEmptyView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1057,7 +1061,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFEmptyView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1090,7 +1094,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFAlert;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1123,7 +1127,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFAlert;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1156,7 +1160,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFTableView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1189,7 +1193,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.1;
+				MARKETING_VERSION = 0.0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFTableView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "IFUIKit"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.0.2"
   spec.summary      = "UI 组件"
 
   # This description is used to generate tags and improve search results.
@@ -39,6 +39,11 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '8.0'
 
   spec.source_files = 'Sources/*.{h,m}'
+  spec.dependency 'IFHUD'
+  spec.dependency 'IFToast'
+  spec.dependency 'IFEmptyView'
+  spec.dependency 'IFAlert'
+  spec.dependency 'IFTableView'
 
 
 end
