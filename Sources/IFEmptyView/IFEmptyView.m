@@ -97,19 +97,20 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if (self.mas_height > 0) {
+    CGFloat tempHeight = self.frame.size.height;
+    if (tempHeight > 0) {
         CGFloat topOffset = self.topPadding;
         if (topOffset == 0) {
-            topOffset = self.mas_height * 0.3;
+            topOffset = tempHeight * 0.3;
         }
         [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(top);
+            make.top.mas_equalTo(topOffset);
             make.centerX.equalTo(self);
-            make.size.equalTo(CGSizeMake(250, 187));
+            make.size.mas_equalTo(CGSizeMake(250, 187));
         }];
         CGFloat btnWidth = self.buttonWidth == 0? 110:self.buttonWidth;
         [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(110, 40));
+            make.size.mas_equalTo(CGSizeMake(btnWidth, 40));
         }];
 
     }
