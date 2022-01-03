@@ -2,16 +2,14 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
-  - SCLAlertView-Objective-C (1.2.0)
-  - SDWebImage (5.12.1):
-    - SDWebImage/Core (= 5.12.1)
-  - SDWebImage/Core (5.12.1)
+  - SDWebImage (5.12.2):
+    - SDWebImage/Core (= 5.12.2)
+  - SDWebImage/Core (5.12.2)
 
 DEPENDENCIES:
   - Masonry
   - MBProgressHUD (~> 1.2.0)
   - MJRefresh
-  - SCLAlertView-Objective-C
   - SDWebImage
 
 SPEC REPOS:
@@ -19,16 +17,14 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
-    - SCLAlertView-Objective-C
     - SDWebImage
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
-  SCLAlertView-Objective-C: 84f12f66d779dadad7f293e5e8b7697ba4254ee0
-  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
 
-PODFILE CHECKSUM: 8f88dcfde8212904c62e72aff9adbbcbbe0d3902
+PODFILE CHECKSUM: 4a6e8bfb481d36d8b4504579a5f4950d5e53dc41
 
 COCOAPODS: 1.11.2

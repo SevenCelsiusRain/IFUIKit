@@ -36,6 +36,44 @@
 		CDC2450D1A10ECC251CAA484 /* Pods_IFEmptyView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760054AE564D46A722EDB3B2 /* Pods_IFEmptyView.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7FE9B2E42782F6A30038EE37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FD34CC6277DB77800FFD2D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FD34D01277DBA2100FFD2D1;
+			remoteInfo = IFAlert;
+		};
+		7FE9B2E62782F6A30038EE37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FD34CC6277DB77800FFD2D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FD34CF5277DB9A300FFD2D1;
+			remoteInfo = IFEmptyView;
+		};
+		7FE9B2E82782F6A30038EE37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FD34CC6277DB77800FFD2D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FD34CDD277DB8D700FFD2D1;
+			remoteInfo = IFHUD;
+		};
+		7FE9B2EA2782F6A30038EE37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FD34CC6277DB77800FFD2D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FD34D0D277DBB9600FFD2D1;
+			remoteInfo = IFTableView;
+		};
+		7FE9B2EC2782F6A30038EE37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FD34CC6277DB77800FFD2D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FD34CE9277DB99000FFD2D1;
+			remoteInfo = IFToast;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0AE72A997E8D3D17F446A002 /* Pods-IFEmptyView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFEmptyView.release.xcconfig"; path = "Target Support Files/Pods-IFEmptyView/Pods-IFEmptyView.release.xcconfig"; sourceTree = "<group>"; };
 		2487BD6159C514FF553C1B4C /* Pods_IFUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,6 +366,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				7FE9B2E52782F6A30038EE37 /* PBXTargetDependency */,
+				7FE9B2E72782F6A30038EE37 /* PBXTargetDependency */,
+				7FE9B2E92782F6A30038EE37 /* PBXTargetDependency */,
+				7FE9B2EB2782F6A30038EE37 /* PBXTargetDependency */,
+				7FE9B2ED2782F6A30038EE37 /* PBXTargetDependency */,
 			);
 			name = IFUIKit;
 			productName = IFUIKit;
@@ -692,6 +735,34 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7FE9B2E52782F6A30038EE37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FD34D01277DBA2100FFD2D1 /* IFAlert */;
+			targetProxy = 7FE9B2E42782F6A30038EE37 /* PBXContainerItemProxy */;
+		};
+		7FE9B2E72782F6A30038EE37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FD34CF5277DB9A300FFD2D1 /* IFEmptyView */;
+			targetProxy = 7FE9B2E62782F6A30038EE37 /* PBXContainerItemProxy */;
+		};
+		7FE9B2E92782F6A30038EE37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FD34CDD277DB8D700FFD2D1 /* IFHUD */;
+			targetProxy = 7FE9B2E82782F6A30038EE37 /* PBXContainerItemProxy */;
+		};
+		7FE9B2EB2782F6A30038EE37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FD34D0D277DBB9600FFD2D1 /* IFTableView */;
+			targetProxy = 7FE9B2EA2782F6A30038EE37 /* PBXContainerItemProxy */;
+		};
+		7FE9B2ED2782F6A30038EE37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FD34CE9277DB99000FFD2D1 /* IFToast */;
+			targetProxy = 7FE9B2EC2782F6A30038EE37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		7FD34CD4277DB77800FFD2D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -832,7 +903,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -865,7 +936,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -898,7 +969,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFHUD;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -931,7 +1002,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFHUD;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -963,7 +1034,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFToast;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -995,7 +1066,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFToast;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1028,7 +1099,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFEmptyView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1061,7 +1132,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFEmptyView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1094,7 +1165,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFAlert;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1127,7 +1198,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFAlert;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1160,7 +1231,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFTableView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1193,7 +1264,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 0.0.0.2;
+				MARKETING_VERSION = 0.0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.changcheng.if.IFTableView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
