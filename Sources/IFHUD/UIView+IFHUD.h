@@ -1,5 +1,5 @@
 //
-//  UIViewController+IFHUD.h
+//  UIView+IFHUD.h
 //  IFHUD
 //
 //  Created by MrGLZh on 2022/1/3.
@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "IFProgressHUD.h"
 
-@interface UIViewController (IFHUD)
+@interface UIView (IFHUD)
 
 /**
  显示提示信息

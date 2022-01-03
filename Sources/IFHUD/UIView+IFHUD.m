@@ -1,14 +1,14 @@
 //
-//  UIViewController+IFHUD.m
+//  UIView+IFHUD.m
 //  IFHUD
 //
 //  Created by MrGLZh on 2022/1/3.
 //
 
-#import "UIViewController+IFHUD.h"
+#import "UIView+IFHUD.h"
 #import "IFHUDMacros.h"
 
-@implementation UIViewController (IFHUD)
+@implementation UIView (IFHUD)
 
 #pragma mark - 提示信息
 - (void)if_showTip:(NSString *)message imageName:(NSString *)imageName type:(IFProgressHUDShowTipType)type {
@@ -16,12 +16,12 @@
     IFProgressHUD * hud = [IFProgressHUD showImageTipText:message
                                                   tipIcon:imageName
                                                      type:type
-                                                   toView:self.navigationController.view animated:YES];
+                                                   toView:self animated:YES];
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.tag = IFProgressHUDTipTag;
     [hud setTextColor:[UIColor whiteColor]];
     [hud setBezelViewBgColor:[UIColor colorWithWhite:0 alpha:0.7]];
-    [self.navigationController.view bringSubviewToFront:hud];
+    [self bringSubviewToFront:hud];
 }
 
 - (void)if_showSuccessTip:(NSString *)message {
@@ -53,7 +53,7 @@
 }
 
 - (BOOL)isExistHUDTip {
-    IFProgressHUD *tipHUD = (IFProgressHUD *)[self.navigationController.view viewWithTag:IFProgressHUDTipTag];
+    IFProgressHUD *tipHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDTipTag];
     if (tipHUD) {
         return YES;
     }
@@ -63,9 +63,9 @@
 #pragma mark show & hide Loadingview
 
 - (void)if_showLoadingView:(NSString *)message {
-    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self.view viewWithTag:IFProgressHUDLoadingTag];
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDLoadingTag];
     if (!loadingHUD) {
-        loadingHUD = [IFProgressHUD showLoadingText:message ToView:self.view];
+        loadingHUD = [IFProgressHUD showLoadingText:message ToView:self];
         loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
         loadingHUD.tag = IFProgressHUDLoadingTag;
         [loadingHUD setTextColor:[UIColor whiteColor]];
@@ -73,14 +73,15 @@
         [loadingHUD setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2]];
     }
     loadingHUD.detailsLabel.text = message;
-    [self.view bringSubviewToFront:loadingHUD];
+    [self bringSubviewToFront:loadingHUD];
 }
 
 - (void)if_hideLoadingView {
-    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self.view viewWithTag:IFProgressHUDLoadingTag];
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDLoadingTag];
     if (loadingHUD) {
         [loadingHUD hideAnimated:YES];
     }
 }
+
 
 @end

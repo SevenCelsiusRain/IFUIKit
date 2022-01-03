@@ -17,5 +17,6 @@ FOUNDATION_EXPORT const unsigned char IFHUDVersionString[];
 #import <UIKit/UIKit.h>
 #import <IFHUD/IFProgressHUD.h>
 #import <IFHUD/UIViewController+IFHUD.h>
+#import <IFHUD/UIView+IFHUD.h>
 
 

@@ -26,6 +26,9 @@
 		7FED4909278290D700D358E1 /* UIViewController+IFHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED4907278290D700D358E1 /* UIViewController+IFHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FED490A278290D700D358E1 /* UIViewController+IFHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED4908278290D700D358E1 /* UIViewController+IFHUD.m */; };
 		7FED490C2782938F00D358E1 /* IFHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FED490B2782938F00D358E1 /* IFHUD.bundle */; };
+		7FED490F278298FA00D358E1 /* UIView+IFHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED490D278298FA00D358E1 /* UIView+IFHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FED4910278298FA00D358E1 /* UIView+IFHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED490E278298FA00D358E1 /* UIView+IFHUD.m */; };
+		7FED491227829B1B00D358E1 /* IFHUDMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FED491127829B1B00D358E1 /* IFHUDMacros.h */; };
 		949E6874611EFC805DDAFDC5 /* Pods_IFToast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3E9EE8536091BE4A881030 /* Pods_IFToast.framework */; };
 		9BEF92D65A1FF9E45449714C /* Pods_IFTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CF81754CF54DE300241232 /* Pods_IFTableView.framework */; };
 		CDC2450D1A10ECC251CAA484 /* Pods_IFEmptyView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760054AE564D46A722EDB3B2 /* Pods_IFEmptyView.framework */; };
@@ -64,6 +67,9 @@
 		7FED4907278290D700D358E1 /* UIViewController+IFHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IFHUD.h"; sourceTree = "<group>"; };
 		7FED4908278290D700D358E1 /* UIViewController+IFHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IFHUD.m"; sourceTree = "<group>"; };
 		7FED490B2782938F00D358E1 /* IFHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IFHUD.bundle; sourceTree = "<group>"; };
+		7FED490D278298FA00D358E1 /* UIView+IFHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IFHUD.h"; sourceTree = "<group>"; };
+		7FED490E278298FA00D358E1 /* UIView+IFHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IFHUD.m"; sourceTree = "<group>"; };
+		7FED491127829B1B00D358E1 /* IFHUDMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFHUDMacros.h; sourceTree = "<group>"; };
 		8499AA856930E43EB5AAD28E /* Pods-IFTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFTableView.debug.xcconfig"; path = "Target Support Files/Pods-IFTableView/Pods-IFTableView.debug.xcconfig"; sourceTree = "<group>"; };
 		93A05486052730B8BBFE655B /* Pods_IFAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE30310E902F45092203D0 /* Pods-IFToast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFToast.release.xcconfig"; path = "Target Support Files/Pods-IFToast/Pods-IFToast.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,8 +174,11 @@
 				7FD34CE0277DB8D700FFD2D1 /* IFHUD.h */,
 				7FED490327828AAE00D358E1 /* IFProgressHUD.h */,
 				7FED490427828AAE00D358E1 /* IFProgressHUD.m */,
+				7FED491127829B1B00D358E1 /* IFHUDMacros.h */,
 				7FED4907278290D700D358E1 /* UIViewController+IFHUD.h */,
 				7FED4908278290D700D358E1 /* UIViewController+IFHUD.m */,
+				7FED490D278298FA00D358E1 /* UIView+IFHUD.h */,
+				7FED490E278298FA00D358E1 /* UIView+IFHUD.m */,
 				7FED490B2782938F00D358E1 /* IFHUD.bundle */,
 			);
 			path = IFHUD;
@@ -259,6 +268,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FED490F278298FA00D358E1 /* UIView+IFHUD.h in Headers */,
+				7FED491227829B1B00D358E1 /* IFHUDMacros.h in Headers */,
 				7FED490527828AAE00D358E1 /* IFProgressHUD.h in Headers */,
 				7FED4909278290D700D358E1 /* UIViewController+IFHUD.h in Headers */,
 				7FD34CE1277DB8D700FFD2D1 /* IFHUD.h in Headers */,
@@ -662,6 +673,7 @@
 			files = (
 				7FED490627828AAE00D358E1 /* IFProgressHUD.m in Sources */,
 				7FED490A278290D700D358E1 /* UIViewController+IFHUD.m in Sources */,
+				7FED4910278298FA00D358E1 /* UIView+IFHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
