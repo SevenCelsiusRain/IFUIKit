@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "IFEmptyView"
-  spec.version      = "0.0.0.3"
+  spec.version      = "0.0.0.4"
   spec.summary      = "空视图"
 
   # This description is used to generate tags and improve search results.
