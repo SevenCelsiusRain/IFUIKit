@@ -9,10 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, IFRefreshType){
-    IFRefreshTypeHeader,
-    IFRefreshTypeFooter
-};
+//typedef NS_ENUM(NSUInteger, IFTableRefreshType){
+//    IFTableRefreshTypeHeader,
+//    IFTableRefreshTypeFooter
+//};
 
 @interface IFBaseTableView : UITableView
 
