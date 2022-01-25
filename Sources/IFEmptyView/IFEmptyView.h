@@ -7,10 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, IFEmptyViewType){
-    IFEmptyViewTypeNoNet,
+    IFEmptyViewTypeNetless,
     IFRefreshTypeContentEmpty,
     IFEmptyViewTypeEmpty
 };
@@ -29,6 +28,8 @@ typedef NS_ENUM(NSUInteger, IFEmptyViewType){
 @property (nonatomic, copy) NSString *infoString;
 /*!用户选中回调*/
 @property (nonatomic, copy) void (^userOperationBlock)(NSInteger index);
+/*!按钮字体*/
+@property (nonatomic, strong) UIFont *buttonFont;
 
 + (instancetype)emptyView;
 
@@ -36,6 +37,11 @@ typedef NS_ENUM(NSUInteger, IFEmptyViewType){
  隐藏所有操作按钮
  */
 - (void)hideAllOperationButton;
+
+/**
+ 设置样式，描述文本
+ */
+- (void)setContentWithType:(IFEmptyViewType)type infoText:(NSString *)infoText;
 
 /**
  设置按钮标题
@@ -46,4 +52,3 @@ typedef NS_ENUM(NSUInteger, IFEmptyViewType){
 
 @end
 
-NS_ASSUME_NONNULL_END

@@ -142,7 +142,7 @@
                 fixView.backgroundColor = self.fixBankColor ? self.fixBankColor : self.contentView.backgroundColor;
                 [self.view addSubview:fixView];
                 [fixView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.equalTo(self.contentView);
+                    make.left.right.equalTo(self.contentView);
                     make.top.equalTo(self.contentView.mas_bottom);
                     make.bottom.equalTo(self.view).offset(self.moveVerticalSpace);
                 }];
@@ -172,7 +172,7 @@
                 fixView.backgroundColor = self.fixBankColor ? self.fixBankColor : self.contentView.backgroundColor;
                 [self.view addSubview:fixView];
                 [fixView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.equalTo(self.contentView);
+                    make.left.right.equalTo(self.contentView);
                     make.top.equalTo(self.view.mas_top).offset(-self.moveVerticalSpace);
                     make.bottom.equalTo(self.contentView.mas_top);
                 }];

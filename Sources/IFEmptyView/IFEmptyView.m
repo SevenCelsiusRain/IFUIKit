@@ -7,6 +7,7 @@
 
 #import "IFEmptyView.h"
 #import <Masonry/Masonry.h>
+#import "UIImage+IFEmptyBundle.h"
 
 @interface IFEmptyView ()
 
@@ -15,6 +16,8 @@
 @property (nonatomic, strong) UIButton *leftButton;
 @property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, strong) UILabel *infoLabel;
+
+@property (nonatomic, assign) IFEmptyViewType type;
 
 @end
 
@@ -52,10 +55,41 @@
     }
 }
 
+- (void)setContentWithType:(IFEmptyViewType)type infoText:(NSString *)infoText {
+    self.type = type;
+    NSString *imageName = @"";
+    NSString *tipText = infoText;
+    switch (type) {
+        case IFEmptyViewTypeNetless:
+            imageName = @"if_empty_netless";
+            tipText = @"网络不太顺畅哦，刷新一下";
+            [self configCenterBtnTheme];
+            break;
+        case IFEmptyViewTypeEmpty:
+            imageName = @"if_empty_empty";
+            tipText = @"此处暂无内容，去看看别的";
+            [self configCenterBtnTheme];
+            break;
+            
+        default:
+            break;
+    }
+    self.imageView.image = [UIImage imageNamed:imageName];
+    if (tipText) {
+        NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:tipText];
+        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+        paraStyle.lineSpacing = self.infoLineSpace;
+        [attri addAttributes:@{NSParagraphStyleAttributeName:paraStyle} range:NSMakeRange(0, tipText.length)];
+        self.infoLabel.attributedText = attri;
+    }
+    
+}
+
 
 #pragma mark - private method
 
 - (void)configUI {
+    self.backgroundColor = UIColor.whiteColor;
     [self addSubview:self.imageView];
     [self addSubview:self.centerButton];
     [self addSubview:self.leftButton];
@@ -112,7 +146,21 @@
         [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(btnWidth, 40));
         }];
+    }
+}
 
+- (void)configCenterBtnTheme {
+    self.centerButton.hidden = NO;
+    self.infoLabel.hidden = NO;
+    if (self.type == IFEmptyViewTypeNetless) {
+        self.centerButton.layer.borderWidth = 1;
+        self.centerButton.layer.borderColor = [UIColor colorWithRed:222/255.f green:222/255.f blue:225/255.f alpha:1].CGColor;
+        [self.centerButton setTitleColor:[UIColor colorWithRed:33/255.f green:33/255.f blue:33/255.f alpha:1] forState:UIControlStateNormal];
+    }else {
+        self.centerButton.layer.borderWidth = 1;
+        self.centerButton.layer.borderColor = [UIColor colorWithRed:222/255.f green:222/255.f blue:225/255.f alpha:1].CGColor;
+        self.backgroundColor = [UIColor colorWithRed:255/255.f green:68/255.f blue:0/255.f alpha:1];
+        [self.centerButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     }
 }
 
@@ -150,8 +198,9 @@
         _infoLabel = [UILabel new];
         _infoLabel.numberOfLines = 0;
         _infoLabel.textColor = UIColor.lightTextColor;
-        _infoLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+        _infoLabel.font = [UIFont systemFontOfSize:14];
         _infoLabel.textAlignment = NSTextAlignmentCenter;
+        _infoLabel.textColor = [UIColor colorWithRed:110/255.f green:112/255.f blue:115/255.f alpha:1];
     }
     return _infoLabel;
 }
@@ -162,9 +211,9 @@
         _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _centerButton.layer.borderColor = [UIColor redColor].CGColor;
         _centerButton.layer.borderWidth = 1.0;
-        _centerButton.layer.cornerRadius = 20;
+        _centerButton.layer.cornerRadius = 23;
         _centerButton.clipsToBounds = YES;
-        _centerButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        _centerButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_centerButton setTitleColor:UIColor.redColor forState:UIControlStateNormal];
         [_centerButton addTarget:self action:@selector(centerBtnAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -226,5 +275,12 @@
 - (void)setInfoString:(NSString *)infoString {
     _infoString = infoString;
     self.infoLabel.text = infoString;
+}
+
+- (void)setButtonFont:(UIFont *)buttonFont {
+    _buttonFont = buttonFont;
+    self.centerButton.titleLabel.font = buttonFont;
+    self.leftButton.titleLabel.font = buttonFont;
+    self.rightButton.titleLabel.font = buttonFont;
 }
 @end

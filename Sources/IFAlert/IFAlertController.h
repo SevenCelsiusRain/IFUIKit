@@ -45,6 +45,8 @@ typedef NS_ENUM(NSUInteger, IFAlertDirectionType) {
 
 - (instancetype)initWithController:(UIViewController *)controller radius:(CGFloat)radius direction:(IFAlertDirectionType)direction;
 
+- (void)dismiss;
+
 @end
 
 NS_ASSUME_NONNULL_END
