@@ -59,28 +59,34 @@
     self.type = type;
     NSString *imageName = @"";
     NSString *tipText = infoText;
+    NSString *titleStr = nil;
     switch (type) {
         case IFEmptyViewTypeNetless:
             imageName = @"if_empty_netless";
             tipText = @"网络不太顺畅哦，刷新一下";
+            titleStr = @"重新加载";
             [self configCenterBtnTheme];
             break;
         case IFEmptyViewTypeEmpty:
             imageName = @"if_empty_empty";
             tipText = @"此处暂无内容，去看看别的";
+            titleStr = @"前往首页";
             [self configCenterBtnTheme];
             break;
             
         default:
             break;
     }
-    self.imageView.image = [UIImage imageNamed:imageName];
+    self.imageView.image = [UIImage if_imageWithName:imageName];
     if (tipText) {
         NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:tipText];
         NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
         paraStyle.lineSpacing = self.infoLineSpace;
         [attri addAttributes:@{NSParagraphStyleAttributeName:paraStyle} range:NSMakeRange(0, tipText.length)];
         self.infoLabel.attributedText = attri;
+    }
+    if (titleStr) {
+        [self.centerButton setTitle:titleStr forState:UIControlStateNormal];
     }
     
 }
@@ -123,7 +129,7 @@
     
     [self.centerButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.leftButton.mas_top);
-        make.size.mas_equalTo(CGSizeMake(130, 40));
+        make.size.mas_equalTo(CGSizeMake(162, 46));
         make.centerX.equalTo(self);
     }];
     
@@ -140,7 +146,7 @@
         [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(topOffset);
             make.centerX.equalTo(self);
-            make.size.mas_equalTo(CGSizeMake(250, 187));
+            make.size.mas_equalTo(CGSizeMake(178, 178));
         }];
         CGFloat btnWidth = self.buttonWidth == 0? 110:self.buttonWidth;
         [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
