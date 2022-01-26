@@ -88,7 +88,6 @@
     if (titleStr) {
         [self.centerButton setTitle:titleStr forState:UIControlStateNormal];
     }
-    
 }
 
 
