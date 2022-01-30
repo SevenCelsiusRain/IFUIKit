@@ -58,7 +58,7 @@
 - (void)setContentWithType:(IFEmptyViewType)type infoText:(NSString *)infoText {
     self.type = type;
     NSString *imageName = @"";
-    NSString *tipText = infoText;
+    NSString *tipText = @"";
     NSString *titleStr = nil;
     switch (type) {
         case IFEmptyViewTypeNetless:
@@ -76,6 +76,9 @@
             
         default:
             break;
+    }
+    if (infoText.length > 0) {
+        tipText = infoText;
     }
     self.imageView.image = [UIImage if_imageWithName:imageName];
     if (tipText) {
@@ -164,7 +167,7 @@
     }else {
         self.centerButton.layer.borderWidth = 1;
         self.centerButton.layer.borderColor = [UIColor colorWithRed:222/255.f green:222/255.f blue:225/255.f alpha:1].CGColor;
-        self.backgroundColor = [UIColor colorWithRed:255/255.f green:68/255.f blue:0/255.f alpha:1];
+        self.centerButton.backgroundColor = [UIColor colorWithRed:255/255.f green:68/255.f blue:0/255.f alpha:1];
         [self.centerButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     }
 }
