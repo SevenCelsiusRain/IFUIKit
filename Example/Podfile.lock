@@ -1,0 +1,72 @@
+PODS:
+  - CRToast (0.0.9)
+  - IFAlert (0.0.1.1):
+    - Masonry
+  - IFEmptyView (0.0.1.1):
+    - Masonry
+  - IFHUD (0.0.1.1):
+    - MBProgressHUD (~> 1.2.0)
+    - SDWebImage
+  - IFTableView (0.0.1.1):
+    - MJRefresh
+  - IFToast (0.0.1.1):
+    - CRToast (~> 0.0.7)
+  - IFUIKit (0.0.1.1):
+    - IFAlert
+    - IFEmptyView
+    - IFHUD
+    - IFTableView
+    - IFToast
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MJRefresh (3.7.5)
+  - SDWebImage (5.12.2):
+    - SDWebImage/Core (= 5.12.2)
+  - SDWebImage/Core (5.12.2)
+
+DEPENDENCIES:
+  - IFAlert (from `../`)
+  - IFEmptyView (from `../`)
+  - IFHUD (from `../`)
+  - IFTableView (from `../`)
+  - IFToast (from `../`)
+  - IFUIKit (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - CRToast
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  IFAlert:
+    :path: "../"
+  IFEmptyView:
+    :path: "../"
+  IFHUD:
+    :path: "../"
+  IFTableView:
+    :path: "../"
+  IFToast:
+    :path: "../"
+  IFUIKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
+  IFAlert: 71bf8ed13c30cb35134f18b8ae1260fc2712f53c
+  IFEmptyView: c6e14610b4b6a22b13909bac0381e6a4007f6a65
+  IFHUD: e6078baf21eb74c8f1df0b1cb2e87f4bd02f0917
+  IFTableView: e4256c0e6dcf343e019b47eeaeafc900cadc91df
+  IFToast: 51b2b045c966152ee2115f8787ddc0edfe8da964
+  IFUIKit: c153e342f3c66720e8f4839bf0db1eb405ee3163
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
+
+PODFILE CHECKSUM: 4b0fdeaba4b7ef5910473318b647e28aed4d50fb
+
+COCOAPODS: 1.11.2

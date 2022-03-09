@@ -20,5 +20,6 @@ FOUNDATION_EXPORT const unsigned char IFUIKitVersionString[];
 #import <IFEmptyView/IFEmpty.h>
 #import <IFAlert/IFAlertController.h>
 #import <IFTableView/IFBaseTableView.h>
+#import <IFToast/IFToast.h>
 
 

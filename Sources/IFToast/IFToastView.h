@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, IFToastEffectStyle){
     IFToastEffectStyleDark
 };
 
-@interface IFToastView : UIVisualEffectView
+@interface IFToastConfig : NSObject
 /*!背景色 default：black*/
 @property (nonatomic, strong) UIColor *contentColor;
 /*!字体颜色 default：white*/
@@ -35,6 +35,11 @@ typedef NS_ENUM(NSUInteger, IFToastEffectStyle){
 @property (nonatomic, assign) CGFloat radius;
 /*!样式 default: light*/
 @property (nonatomic, assign) IFToastEffectStyle effectStyle;
+@end
+
+@interface IFToastView : UIVisualEffectView
+
+@property (nonatomic, strong, readonly) IFToastConfig *config;
 
 + (void)removeAllToast;
 
@@ -48,3 +53,8 @@ typedef NS_ENUM(NSUInteger, IFToastEffectStyle){
 
 @end
 
+@interface IFToastConfig ()
+
++ (instancetype)config;
+
+@end

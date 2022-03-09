@@ -14,7 +14,7 @@
 #define IMG_TOAST_TAG 47098
 #define TOAST_COLOR_WHITE [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1/1.0]
 #define TOAST_COLOR_BLACK [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.8]
-#define TOP_WINDOW [UIApplication sharedApplication].delegate.window
+#define TOP_WINDOW [UIApplication sharedApplication].keyWindow
 #define CORNER_RADIUS 5.0
 
 @interface IFToastView ()
@@ -37,11 +37,13 @@
 #pragma mark - public method
 
 - (void)showToastWithText:(NSString *)text {
+    self.textStr = text;
     [self show];
 }
 
 - (void)showToastWithText:(NSString *)text position:(IFToastPosition)position {
-    self.position = position;
+    self.textStr = text;
+    self.config.position = position;
     [self show];
 }
 
@@ -51,7 +53,7 @@
     IFToastView *toastV = [IFToastView contentToastWithTag:IMG_TOAST_TAG title:text];
     tipView.frame = CGRectMake(58, 28, 40, 40);
     [toastV.contentV addSubview:tipView];
-    [toastV showImgToastWithStayDuration:self.duration
+    [toastV showImgToastWithStayDuration:self.config.duration
                   usingSpringWithDamping:0
                    initialSpringVelocity:0
                                  options:UIViewAnimationOptionCurveEaseInOut];
@@ -78,16 +80,8 @@
 #pragma mark - private method
 - (void)configUI {
     self.alpha = 0.0;
-    _contentColor = UIColor.blackColor;
-    _textColor = UIColor.whiteColor;
-    _textFont = [UIFont systemFontOfSize:16];
-    _duration = 1.0;
-    _isUserEnable = NO;
-    _position = IFToastPositionCenter;
-    _effectStyle = IFToastEffectStyleLight;
-    _radius = 5;
-    self.backgroundColor = _contentColor;
-    self.layer.cornerRadius = self.radius;
+    self.backgroundColor = self.config.contentColor;
+    self.layer.cornerRadius = self.config.radius;
     self.clipsToBounds = true;
     UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     self.effect = effect;
@@ -134,9 +128,10 @@
     if (self.textStr.length <= 0) {
         return;
     }
+    self.textLabel.text = self.textStr;
     [IFToastView removeAllToast];
-    self.effect = [UIBlurEffect effectWithStyle:self.effectStyle == IFToastEffectStyleDark ? UIBlurEffectStyleDark : UIBlurEffectStyleExtraLight];
-    [self showTextToastWithWithStayDuration:self.duration position:self.position];
+    self.effect = [UIBlurEffect effectWithStyle:self.config.effectStyle == IFToastEffectStyleDark ? UIBlurEffectStyleDark : UIBlurEffectStyleExtraLight];
+    [self showTextToastWithWithStayDuration:self.config.duration position:self.config.position];
 }
 
 - (CGFloat)calculateMessagTHeightWithText:(NSString *)string
@@ -166,7 +161,7 @@
                           NSParagraphStyleAttributeName: paragraphStyle,
                           NSForegroundColorAttributeName: TOAST_COLOR_WHITE
                           };
-    CGFloat height = [self calculateMessagTHeightWithText:self.textLabel.text width:preferredMaxLayoutWidth attribute:dic] + 40;
+    CGFloat height = [self calculateMessagTHeightWithText:self.textStr width:preferredMaxLayoutWidth attribute:dic] + 40;
     if (height > TOAST_HEIGHT + 20) {
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.textLabel.text attributes:dic];
         self.frame = CGRectMake(0, 0, preferredMaxLayoutWidth + 40, height);
@@ -197,6 +192,8 @@
 }
 
 - (void)showImgToastWithStayDuration:(NSTimeInterval)Duration usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options {
+    UIWindow * window = TOP_WINDOW;
+    
     [TOP_WINDOW addSubview:self];
     [TOP_WINDOW bringSubviewToFront:self];
     [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:dampingRatio initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -242,26 +239,36 @@
 
 #pragma mark - setter
 
-- (void)setTextColor:(UIColor *)textColor {
-    _textColor = textColor;
-    self.textLabel.textColor = textColor;
-}
-
-- (void)setTextFont:(UIFont *)textFont {
-    _textFont = textFont;
-    self.textLabel.font = textFont;
-}
-
-- (void)setIsUserEnable:(BOOL)isUserEnable {
-    _isUserEnable = isUserEnable;
-    self.isUserEnable = isUserEnable;
-}
-
 - (NSInteger)tag {
     if (self.tipView) {
         return IMG_TOAST_TAG;
     }
     return TEXT_TOAST_TAG;
+}
+
+@end
+
+
+@implementation IFToastConfig
+
++ (instancetype)config {
+    IFToastConfig *config = [[IFToastConfig alloc] init];
+    return config;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _contentColor = UIColor.blackColor;
+        _textColor = UIColor.whiteColor;
+        _textFont = [UIFont systemFontOfSize:16];
+        _duration = 1.0;
+        _isUserEnable = NO;
+        _position = IFToastPositionCenter;
+        _effectStyle = IFToastEffectStyleLight;
+        _radius = 5;
+    }
+    return self;
 }
 
 @end

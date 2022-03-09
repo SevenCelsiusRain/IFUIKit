@@ -36,7 +36,7 @@ Pod::Spec.new do |spec|
 
 
   spec.requires_arc = true
-  spec.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '9.0'
 
   spec.source_files = 'Sources/*.{h,m}'
   spec.dependency 'IFHUD'

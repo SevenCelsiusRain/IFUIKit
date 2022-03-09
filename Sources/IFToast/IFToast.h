@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import <IFToast/IFToastView.h>
+#import <IFToast/UIView+IFNotiToast.h>
+
 //! Project version number for IFToast.
 FOUNDATION_EXPORT double IFToastVersionNumber;
 

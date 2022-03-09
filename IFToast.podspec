@@ -36,10 +36,12 @@ Pod::Spec.new do |spec|
 
 
   spec.requires_arc = true
-  spec.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '9.0'
 
   #s.resources = ['Sources/Device/*.json']
   spec.source_files = 'Sources/IFToast/*.{h,m}'
   spec.public_header_files = 'Sources/IFToast/*.h'
+  
+  spec.dependency 'CRToast', '~> 0.0.7'
 
 end
