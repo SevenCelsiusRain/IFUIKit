@@ -6,55 +6,48 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYImage/YYImage.h>
 
-typedef NS_ENUM(NSUInteger, IFToastPosition) {
-    IFToastPositionTop,
-    IFToastPositionCenter,
-    IFToastPositionBottom,
-};
+@interface IFToastView : NSObject
 
-typedef NS_ENUM(NSUInteger, IFToastEffectStyle){
-    IFToastEffectStyleLight,
-    IFToastEffectStyleDark
-};
++ (void)showCenterWithText:(NSString *)text;
 
-@interface IFToastConfig : NSObject
-/*!背景色 default：black*/
-@property (nonatomic, strong) UIColor *contentColor;
-/*!字体颜色 default：white*/
-@property (nonatomic, strong) UIColor *textColor;
-/*!字体大小 default：16*/
-@property (nonatomic, strong) UIFont *textFont;
-/*!展示时长 default：1s*/
-@property (nonatomic, assign) NSTimeInterval duration;
-/*!是否可交互 default：NO*/
-@property (nonatomic, assign) BOOL isUserEnable;
-/*!位置 default：center*/
-@property (nonatomic, assign) IFToastPosition position;
-/*!圆角大小*/
-@property (nonatomic, assign) CGFloat radius;
-/*!样式 default: light*/
-@property (nonatomic, assign) IFToastEffectStyle effectStyle;
-@end
++ (void)showWithImage:(UIImage *)image text:(NSString *)text;
 
-@interface IFToastView : UIVisualEffectView
++ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration;
 
-@property (nonatomic, strong, readonly) IFToastConfig *config;
++ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration userEnable:(BOOL)userEnable;
 
-+ (void)removeAllToast;
++ (void)showTopWithText:(NSString *)text;
 
-- (void)showToastWithText:(NSString *)text;
++ (void)showTopWithText:(NSString *)text duration:(CGFloat)duration;
 
-- (void)showToastWithText:(NSString *)text position:(IFToastPosition)position;
++ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset;
 
-- (void)showToastWithText:(NSString *)text tipView:(UIView *)tipView;
++ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset duration:(CGFloat)duration;
 
-- (void)showToastWithText:(NSString *)text tipImage:(UIImage *)tipImage;
++ (void)showBottomWithText:(NSString *)text;
 
-@end
++ (void)showBottomWithText:(NSString *)text duration:(CGFloat)duration;
 
-@interface IFToastConfig ()
++ (void)showBottomWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset duration:(CGFloat)duration;
 
-+ (instancetype)config;
+
+- (void)showGifCenter;
+
+- (void)showInView:(UIView *)view;
+
+- (void)showGifInView:(UIView *)view;
+
+- (void)hideGifCenter;
+
+
+- (instancetype)initWithText:(NSString *)text;
+
+- (instancetype)initWithImage:(UIImage *)image text:(NSString *)text;
+
+- (instancetype)initWithImage:(YYImage *)image;
+
+
 
 @end

@@ -43,5 +43,6 @@ Pod::Spec.new do |spec|
   spec.public_header_files = 'Sources/IFToast/*.h'
   
   spec.dependency 'CRToast', '~> 0.0.7'
+  spec.dependency 'YYImage'
 
 end

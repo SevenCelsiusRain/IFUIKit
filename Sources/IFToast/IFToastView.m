@@ -7,268 +7,321 @@
 
 #import "IFToastView.h"
 
-#define TOAST_MIN_WIDTH  108.0
-#define TOAST_HEIGHT 56.0
-#define FADE_DURATION 0.3
-#define TEXT_TOAST_TAG 47097
-#define IMG_TOAST_TAG 47098
-#define TOAST_COLOR_WHITE [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1/1.0]
-#define TOAST_COLOR_BLACK [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.8]
-#define TOP_WINDOW [UIApplication sharedApplication].keyWindow
-#define CORNER_RADIUS 5.0
+@interface IFView : UIView
+@end
 
-@interface IFToastView ()
+static CGFloat displayDuration = 2.0;
+@interface IFToastView()
+@property (nonatomic, strong) IFView *bgView;
+@property (nonatomic, strong) IFView *contentView;
+@property (nonatomic, assign) CGFloat duration;
+
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *textLabel;
-@property (nonatomic, strong) UIView *contentV;
-@property (nonatomic, strong) NSString *textStr;
-@property (nonatomic, strong) UIView *tipView;
+@property (nonatomic, strong) YYAnimatedImageView *yyImageView;
 
 @end
 
+
 @implementation IFToastView
+
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self configUI];
+        _duration = 2.0;
     }
     return self;
 }
 
-#pragma mark - public method
-
-- (void)showToastWithText:(NSString *)text {
-    self.textStr = text;
-    [self show];
-}
-
-- (void)showToastWithText:(NSString *)text position:(IFToastPosition)position {
-    self.textStr = text;
-    self.config.position = position;
-    [self show];
-}
-
-- (void)showToastWithText:(NSString *)text tipView:(UIView *)tipView {
-    _tipView = tipView;
-    if (text.length <= 0) return;
-    IFToastView *toastV = [IFToastView contentToastWithTag:IMG_TOAST_TAG title:text];
-    tipView.frame = CGRectMake(58, 28, 40, 40);
-    [toastV.contentV addSubview:tipView];
-    [toastV showImgToastWithStayDuration:self.config.duration
-                  usingSpringWithDamping:0
-                   initialSpringVelocity:0
-                                 options:UIViewAnimationOptionCurveEaseInOut];
-}
-
-- (void)showToastWithText:(NSString *)text tipImage:(UIImage *)tipImage {
-    UIImageView *imageV = [[UIImageView alloc] init];
-    imageV.image = tipImage;
-    [self showToastWithText:text tipView:imageV];
-}
-
-+ (void)removeAllToast {
-    if (TOP_WINDOW.subviews.count <= 0) return;
-    for (UIView *v in TOP_WINDOW.subviews) {
-        if ([v isKindOfClass:[self class]] && (v.tag == TEXT_TOAST_TAG || v.tag == IMG_TOAST_TAG)) {
-            v.hidden = true;
-            [NSObject cancelPreviousPerformRequestsWithTarget:v];
-            [v removeFromSuperview];
-        }
+- (instancetype)initWithText:(NSString *)text {
+    self = [super init];
+    if (self) {
+        [self setupViewsWithImage:nil text:text];
     }
+    return self;
+}
+
+- (instancetype)initWithImage:(UIImage *)image text:(NSString *)text {
+    self = [super init];
+    if (self) {
+        [self setupViewsWithImage:image text:text];
+    }
+    return self;
+}
+
+- (instancetype)initWithImage:(YYImage *)image {
+    self = [super init];
+    if (self) {
+        [self setupViewWithImage:image];
+    }
+    return self;
 }
 
 
-#pragma mark - private method
-- (void)configUI {
-    self.alpha = 0.0;
-    self.backgroundColor = self.config.contentColor;
-    self.layer.cornerRadius = self.config.radius;
-    self.clipsToBounds = true;
-    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    self.effect = effect;
+#pragma mark - private methods
+
+- (void)setupViewsWithImage:(UIImage *)image text:(NSString *)text {
+    CGFloat imageWidth = 0;
+    CGFloat imageHeight = 0;
+    if (image) {
+        imageWidth = image.size.width;
+        imageHeight = image.size.height;
+        self.imageView.image = image;
+    }
+    
+    CGRect textRect = [text boundingRectWithSize:CGSizeMake(280, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
+    
+    CGFloat selfWidth = (imageWidth > textRect.size.width ? imageWidth:textRect.size.width) + 50;
+    CGFloat selfHeight = imageHeight + textRect.size.height + 20;
+    
+    self.imageView.frame = CGRectMake((selfWidth - imageWidth)/2.0, 5, imageWidth, imageHeight);
+    
+    CGFloat yAxis = CGRectGetMaxY(self.imageView.frame) + 10;
+    CGFloat textH = textRect.size.height;
+    if (imageWidth == 0 && imageHeight == 0) {
+        yAxis = 0;
+        textH = selfHeight;
+    }
+    self.textLabel.text = text;
+    self.textLabel.frame = CGRectMake(0, yAxis, selfWidth, textH);
+    self.contentView.frame = CGRectMake(0, 0, selfWidth, selfHeight);
+    [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.textLabel];
 }
 
-+ (IFToastView *)contentToastWithTag:(NSInteger)tag title:(NSString *)title {
-    IFToastView *toastV = [IFToastView toastWithTag:IMG_TOAST_TAG title:title];
-    toastV.frame = TOP_WINDOW.bounds;
-    toastV.layer.masksToBounds = false;
-    toastV.layer.cornerRadius = 0.0;
-    toastV.backgroundColor = toastV.backgroundColor;
-
-    toastV.contentV.layer.masksToBounds = true;
-    [toastV.contentView insertSubview:toastV.contentV belowSubview:toastV.textLabel];
-    toastV.textLabel.frame = CGRectMake(toastV.contentV.frame.origin.x, CGRectGetMaxY(toastV.contentV.frame) - 48, toastV.contentV.frame.size.width, 26);
-    toastV.textLabel.text = title;
-    toastV.effect = nil;
-    return toastV;
+- (void)setupViewWithImage:(YYImage *)image {
+    self.yyImageView.image = image;
+    self.bgView.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height);
+    
+    CGFloat width = 30;
+    self.contentView.frame = CGRectMake(0, 0, width + 50, width + 50);
+    [self.contentView addSubview:self.yyImageView];
+    self.yyImageView.frame = CGRectMake(0, 0, width, width);
+    self.yyImageView.center = self.contentView.center;
 }
 
-+ (IFToastView *)toastWithTag:(NSInteger)tag title:(NSString *)title {
-    [self removeAllToast];
-    IFToastView *toastV = [[IFToastView alloc] init];
-    toastV.tag = tag;
-    return toastV;
-}
-
-
-+ (IFToastView *)getToastWithTag:(NSInteger)tag {
-    if (TOP_WINDOW.subviews.count <= 0) return nil;
-    for (UIView *v in TOP_WINDOW.subviews) {
-        if ([v isKindOfClass:[IFToastView class]] && v.tag == tag) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored"-Wincompatible-pointer-types"
-            return v;
-#pragma clang diagnostic pop
+- (BOOL)shouldShowToast {
+    UIWindow *window = UIApplication.sharedApplication.keyWindow;
+    if (!window) {
+        return NO;
+    }
+    
+    NSInteger index = 0;
+    for (UIView *view in window.subviews) {
+        if ([view isMemberOfClass:IFView.class]) {
+            index += 1;
         }
     }
-    return nil;
+    return index == 0;
 }
 
 - (void)show {
-    if (self.textStr.length <= 0) {
+    if (![self shouldShowToast]) {
         return;
     }
-    self.textLabel.text = self.textStr;
-    [IFToastView removeAllToast];
-    self.effect = [UIBlurEffect effectWithStyle:self.config.effectStyle == IFToastEffectStyleDark ? UIBlurEffectStyleDark : UIBlurEffectStyleExtraLight];
-    [self showTextToastWithWithStayDuration:self.config.duration position:self.config.position];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    self.contentView.center = window.center;
+    [window addSubview:self.bgView];
+    [window addSubview:self.contentView];
+    [self showAnimation];
+    [self performSelector:@selector(hideAnimation) withObject:nil afterDelay:self.duration];
 }
 
-- (CGFloat)calculateMessagTHeightWithText:(NSString *)string
-                                    width:(CGFloat)width
-                                attribute:(NSDictionary *)attribute {
-    static UILabel *stringLabel = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        stringLabel = [[UILabel alloc] init];
-        stringLabel.numberOfLines = 0;
-    });
-    stringLabel.attributedText = [[NSMutableAttributedString alloc] initWithString:string attributes:attribute];
-    stringLabel.preferredMaxLayoutWidth = width;
-    return [stringLabel sizeThatFits:CGSizeMake(width, CGFLOAT_MAX)].height;
-}
-
-- (void)showTextToastWithWithStayDuration:(NSTimeInterval)Duration
-                                 position:(IFToastPosition)position {
-    CGFloat preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 144;
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:self.textLabel.font.pointSize * 0.5];
-    [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
-    [paragraphStyle setAlignment:NSTextAlignmentCenter];
-    NSDictionary *dic = @{
-                          NSFontAttributeName: self.textLabel.font,
-                          NSParagraphStyleAttributeName: paragraphStyle,
-                          NSForegroundColorAttributeName: TOAST_COLOR_WHITE
-                          };
-    CGFloat height = [self calculateMessagTHeightWithText:self.textStr width:preferredMaxLayoutWidth attribute:dic] + 40;
-    if (height > TOAST_HEIGHT + 20) {
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.textLabel.text attributes:dic];
-        self.frame = CGRectMake(0, 0, preferredMaxLayoutWidth + 40, height);
-        self.textLabel.frame = CGRectMake(20, 0, preferredMaxLayoutWidth, height);
-        self.textLabel.attributedText = attributedString;
-        self.textLabel.numberOfLines = 0;
-    }else {
-        NSDictionary *attrs = @{NSFontAttributeName : self.textLabel.font};
-        CGSize size = [self.textLabel.text sizeWithAttributes:attrs];
-        self.frame = CGRectMake(0, 0, (size.width + 42) > TOAST_MIN_WIDTH ? (size.width + 42) : TOAST_MIN_WIDTH, TOAST_HEIGHT);
-        self.textLabel.frame = self.bounds;
-        self.textLabel.numberOfLines = 1;
+- (void)showFromTopOffset:(CGFloat)topOffset {
+    if (![self shouldShowToast]) {
+        return;
     }
-    
-    CGPoint center = TOP_WINDOW.center;
-    switch (position) {
-        case IFToastPositionTop: center.y = TOP_WINDOW.bounds.size.height * 0.25; break;
-        case IFToastPositionBottom: center.y = TOP_WINDOW.bounds.size.height * 0.75; break;
-        case IFToastPositionCenter: break;
-        default: break;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    self.contentView.center = CGPointMake(window.center.x, topOffset + self.contentView.frame.size.height/2.0);
+    [window addSubview:self.bgView];
+    [window addSubview:self.contentView];
+    [self showAnimation];
+    [self performSelector:@selector(hideAnimation) withObject:nil afterDelay:self.duration];
+}
+
+- (void)showFromBottonOffset:(CGFloat)bottomOffset {
+    if (![self shouldShowToast]) {
+        return;
     }
-    self.center = center;
-    
-    [self showImgToastWithStayDuration:Duration
-                usingSpringWithDamping:0.8
-                 initialSpringVelocity:10
-                               options:UIViewAnimationOptionCurveEaseInOut];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    self.contentView.center = CGPointMake(window.center.x, window.frame.size.height - (bottomOffset + self.contentView.frame.size.height/2.0));
+    [window addSubview:self.bgView];
+    [window addSubview:self.contentView];
+    [self showAnimation];
+    [self performSelector:@selector(hideAnimation) withObject:nil afterDelay:self.duration];
 }
 
-- (void)showImgToastWithStayDuration:(NSTimeInterval)Duration usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options {
-    UIWindow * window = TOP_WINDOW;
-    
-    [TOP_WINDOW addSubview:self];
-    [TOP_WINDOW bringSubviewToFront:self];
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:dampingRatio initialSpringVelocity:velocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        [self performSelector:@selector(removeToastView) withObject:nil afterDelay:Duration];
-    }];
+- (void)dismissToast {
+    [self.bgView removeFromSuperview];
+    [self.contentView removeFromSuperview];
 }
 
-- (void)removeToastView {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self removeFromSuperview];
-        });
-    }];
+- (void)showAnimation {
+    [UIView beginAnimations:@"show" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView setAnimationDuration:0.3];
+    [UIView commitAnimations];
 }
+
+- (void)hideAnimation {
+    [UIView beginAnimations:@"hide" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(dismissToast)];
+    [UIView setAnimationDuration:0.3];
+    [UIView commitAnimations];
+}
+
+
+#pragma mark - public mehods
+
++ (void)showCenterWithText:(NSString *)text {
+    [IFToastView showCenterWithText:text duration:displayDuration];
+}
+
++ (void)showWithImage:(UIImage *)image text:(NSString *)text {
+    IFToastView *toast = [[IFToastView alloc] initWithImage:image text:text];
+    toast.duration = displayDuration;
+    [toast show];
+}
+
++ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration {
+    IFToastView *toast = [[IFToastView alloc] initWithText:text];
+    toast.duration = duration;
+    [toast show];
+}
+
++ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration userEnable:(BOOL)userEnable {
+    IFToastView *toast = [[IFToastView alloc] initWithText:text];
+    toast.duration = duration;
+    toast.bgView.userInteractionEnabled = userEnable;
+    toast.duration = duration;
+    [toast show];
+}
+
++ (void)showTopWithText:(NSString *)text {
+    [IFToastView showTopWithText:text topOffset:100.0 duration:displayDuration];
+}
+
++ (void)showTopWithText:(NSString *)text duration:(CGFloat)duration {
+    [IFToastView showTopWithText:text topOffset:100 duration:duration];
+}
+
++ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset {
+    [IFToastView showTopWithText:text topOffset:topOffset duration:displayDuration];
+}
+
++ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset duration:(CGFloat)duration {
+    IFToastView *toast = [[IFToastView alloc] initWithText:text];
+    toast.duration = duration;
+    [toast showFromTopOffset:topOffset];
+}
+
++ (void)showBottomWithText:(NSString *)text {
+    [IFToastView showBottomWithText:text bottomOffset:100 duration:displayDuration];
+}
+
++ (void)showBottomWithText:(NSString *)text duration:(CGFloat)duration {
+    [IFToastView showBottomWithText:text bottomOffset:100 duration:duration];
+}
+
++ (void)showBottomWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset {
+    [IFToastView showTopWithText:text topOffset:bottomOffset duration:displayDuration];
+}
+
++ (void)showBottomWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset duration:(CGFloat)duration {
+    IFToastView *toast = [[IFToastView alloc] initWithText:text];
+    toast.duration = duration;
+    [toast showFromBottonOffset:bottomOffset];
+}
+
+- (void)showGifCenter {
+    if (![self shouldShowToast]) {
+        return;
+    }
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self.bgView];
+    [window addSubview:self.contentView];
+    [self showAnimation];
+    
+}
+
+- (void)showInView:(UIView *)view {
+    if (![self shouldShowToast]) {
+        return;
+    }
+    self.contentView.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+    [view addSubview:self.bgView];
+    [view addSubview:self.contentView];
+    [self showAnimation];
+}
+
+- (void)showGifInView:(UIView *)view {
+    if (![self shouldShowToast]) {
+        return;
+    }
+    [view addSubview:self.bgView];
+    [view addSubview:self.contentView];
+    [self showAnimation];
+}
+
+- (void)hideGifCenter {
+    [self.bgView removeFromSuperview];
+    [self.contentView removeFromSuperview];
+}
+
+
+
 
 
 #pragma mark - getter
 
+- (IFView *)bgView {
+    if (!_bgView) {
+        _bgView = [[IFView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height)];
+    }
+    return _bgView;
+}
+
+- (UIImageView *)imageView {
+    if (!_imageView) {
+        _imageView = [UIImageView new];
+    }
+    return _imageView;
+}
+
 - (UILabel *)textLabel {
     if (!_textLabel) {
         _textLabel = [UILabel new];
-        _textLabel.font = [UIFont systemFontOfSize:16];
-        _textLabel.textColor = TOAST_COLOR_WHITE;
+        _textLabel.textColor = UIColor.whiteColor;
         _textLabel.textAlignment = NSTextAlignmentCenter;
+        _textLabel.font = [UIFont systemFontOfSize:16];
+        _textLabel.numberOfLines = 0;
     }
     return _textLabel;
 }
 
-- (UIView *)contentV {
-    if (!_contentV) {
-        _contentV = [UIView new];
-        _contentV = [[UIView alloc] initWithFrame:CGRectMake((TOP_WINDOW.bounds.size.width - 156) * 0.5, (TOP_WINDOW.bounds.size.height - 122) * 0.5, 156, 122)];
-        _contentV.backgroundColor = TOAST_COLOR_BLACK;
-        _contentV.layer.cornerRadius = CORNER_RADIUS;
-        _contentV.layer.masksToBounds = true;
+- (IFView *)contentView {
+    if (!_contentView) {
+        _contentView = [IFView new];
+        _contentView.layer.cornerRadius = 8;
+        _contentView.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.8];
+        _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     }
-    return _contentV;
+    return _contentView;
 }
 
-#pragma mark - setter
-
-- (NSInteger)tag {
-    if (self.tipView) {
-        return IMG_TOAST_TAG;
+- (YYAnimatedImageView *)yyImageView {
+    if (!_yyImageView) {
+        _yyImageView = [[YYAnimatedImageView alloc] init];
     }
-    return TEXT_TOAST_TAG;
+    return _yyImageView;
 }
+
 
 @end
 
 
-@implementation IFToastConfig
-
-+ (instancetype)config {
-    IFToastConfig *config = [[IFToastConfig alloc] init];
-    return config;
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _contentColor = UIColor.blackColor;
-        _textColor = UIColor.whiteColor;
-        _textFont = [UIFont systemFontOfSize:16];
-        _duration = 1.0;
-        _isUserEnable = NO;
-        _position = IFToastPositionCenter;
-        _effectStyle = IFToastEffectStyleLight;
-        _radius = 5;
-    }
-    return self;
-}
+@implementation IFView
 
 @end
