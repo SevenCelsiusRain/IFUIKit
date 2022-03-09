@@ -43,12 +43,14 @@
 //    [self.view if_showTip:@"成功了" imageName:@"if_server_door" type:IFProgressHUDShowTypeSuccess];
     
 //    IFToastView *toast = [[IFToastView alloc] initWithImage:[YYImage imageNamed:@"loggingIn"]];
+//    toast.maskColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
+//    toast.contentColor = [UIColor.blueColor colorWithAlphaComponent:0.5];
 //    [toast showGifCenter];
 //    [toast showGifInView:self.contentView];
     
-//    IFToastView *toast = [[IFToastView alloc] initWithText:@"开始认为"];
-//    [toast showInView:self.contentView];
-    
+    IFToastView *toast = [[IFToastView alloc] initWithText:@"开始认为"];
+    toast.textColor = UIColor.yellowColor;
+    [toast showInView:self.contentView];
 }
 
 - (UIView *)contentView {

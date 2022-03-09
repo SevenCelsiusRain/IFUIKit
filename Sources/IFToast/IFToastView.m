@@ -28,12 +28,15 @@ static CGFloat displayDuration = 2.0;
     self = [super init];
     if (self) {
         _duration = 2.0;
+        _textColor = UIColor.whiteColor;
+        _contentColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+        _maskColor = UIColor.clearColor;
     }
     return self;
 }
 
 - (instancetype)initWithText:(NSString *)text {
-    self = [super init];
+    self = [self init];
     if (self) {
         [self setupViewsWithImage:nil text:text];
     }
@@ -41,7 +44,7 @@ static CGFloat displayDuration = 2.0;
 }
 
 - (instancetype)initWithImage:(UIImage *)image text:(NSString *)text {
-    self = [super init];
+    self = [self init];
     if (self) {
         [self setupViewsWithImage:image text:text];
     }
@@ -49,7 +52,7 @@ static CGFloat displayDuration = 2.0;
 }
 
 - (instancetype)initWithImage:(YYImage *)image {
-    self = [super init];
+    self = [self init];
     if (self) {
         [self setupViewWithImage:image];
     }
@@ -236,7 +239,7 @@ static CGFloat displayDuration = 2.0;
     [toast showFromCenterOffset:0];
 }
 
-- (void)showGifCenter {
+- (void)showInCenter {
     if (![self shouldShowToast]) {
         return;
     }
@@ -257,32 +260,13 @@ static CGFloat displayDuration = 2.0;
     [self showAnimation];
 }
 
-- (void)showGifInView:(UIView *)view {
-    if (![self shouldShowToast]) {
-        return;
-    }
-    self.contentView.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
-    [view addSubview:self.bgView];
-    [view addSubview:self.contentView];
-    [self showAnimation];
-}
-
-- (void)hideGifCenter {
-    [self.bgView removeFromSuperview];
-    [self.contentView removeFromSuperview];
-}
-
-- (void)setUserEnable:(BOOL)userEnable {
-    _userEnable = userEnable;
-    self.bgView.userInteractionEnabled = userEnable;
-}
-
 
 #pragma mark - getter
 
 - (IFView *)bgView {
     if (!_bgView) {
         _bgView = [[IFView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height)];
+        _bgView.backgroundColor = self.maskColor;
     }
     return _bgView;
 }
@@ -297,7 +281,7 @@ static CGFloat displayDuration = 2.0;
 - (UILabel *)textLabel {
     if (!_textLabel) {
         _textLabel = [UILabel new];
-        _textLabel.textColor = UIColor.whiteColor;
+        _textLabel.textColor = self.textColor;
         _textLabel.textAlignment = NSTextAlignmentCenter;
         _textLabel.font = [UIFont systemFontOfSize:16];
         _textLabel.numberOfLines = 0;
@@ -309,7 +293,7 @@ static CGFloat displayDuration = 2.0;
     if (!_contentView) {
         _contentView = [IFView new];
         _contentView.layer.cornerRadius = 8;
-        _contentView.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.8];
+        _contentView.backgroundColor = self.contentColor;
         _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     }
     return _contentView;
@@ -322,6 +306,25 @@ static CGFloat displayDuration = 2.0;
     return _yyImageView;
 }
 
+- (void)setUserEnable:(BOOL)userEnable {
+    _userEnable = userEnable;
+    self.bgView.userInteractionEnabled = userEnable;
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.textLabel.textColor = textColor;
+}
+
+- (void)setContentColor:(UIColor *)contentColor {
+    _contentColor = contentColor;
+    self.contentView.backgroundColor = contentColor;
+}
+
+- (void)setMaskColor:(UIColor *)maskColor {
+    _maskColor = maskColor;
+    self.bgView.backgroundColor = maskColor;
+}
 
 @end
 
