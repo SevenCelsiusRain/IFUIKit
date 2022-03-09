@@ -14,7 +14,6 @@ static CGFloat displayDuration = 2.0;
 @interface IFToastView()
 @property (nonatomic, strong) IFView *bgView;
 @property (nonatomic, strong) IFView *contentView;
-@property (nonatomic, assign) CGFloat duration;
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *textLabel;
@@ -115,7 +114,7 @@ static CGFloat displayDuration = 2.0;
     return index == 0;
 }
 
-- (void)show {
+- (void)showFromCenterOffset:(CGFloat)centerOffset {
     if (![self shouldShowToast]) {
         return;
     }
@@ -175,64 +174,66 @@ static CGFloat displayDuration = 2.0;
 
 #pragma mark - public mehods
 
-+ (void)showCenterWithText:(NSString *)text {
-    [IFToastView showCenterWithText:text duration:displayDuration];
++ (void)showWithText:(NSString *)text positionType:(IFToastPositionType)positionType {
+    [self showWithText:text duration:displayDuration positionType:positionType];
+}
+
++ (void)showWithText:(NSString *)text duration:(CGFloat)duration positionType:(IFToastPositionType)positionType {
+    CGFloat offset = 0;
+    if (positionType != IFToastPositionTypeCenter) {
+        offset = 100;
+    }
+    [self showWithText:text duration:duration offset:offset positionType:positionType];
+}
+
++ (void)showWithText:(NSString *)text duration:(CGFloat)duration offset:(CGFloat)offset positionType:(IFToastPositionType)positionType {
+    IFToastView *toast = [[IFToastView alloc] initWithText:text];
+    toast.duration = duration;
+    
+    switch (positionType) {
+        case IFToastPositionTypeTop:
+            [toast showFromTopOffset:offset];
+            break;
+            
+        case IFToastPositionTypeBottom:
+            [toast showFromBottonOffset:offset];
+            break;
+            
+        case IFToastPositionTypeCenter:
+            [toast showFromCenterOffset:offset];
+            break;
+            
+        default:
+            break;
+    }
+}
+
++ (void)showWithText:(NSString *)text duration:(CGFloat)duration offset:(CGFloat)offset userEnable:(BOOL)userEnable positionType:(IFToastPositionType)positionType {
+    IFToastView *toast = [[IFToastView alloc] initWithText:text];
+    toast.duration = duration;
+    toast.userEnable = userEnable;
+    switch (positionType) {
+        case IFToastPositionTypeTop:
+            [toast showFromTopOffset:offset];
+            break;
+            
+        case IFToastPositionTypeBottom:
+            [toast showFromBottonOffset:offset];
+            break;
+            
+        case IFToastPositionTypeCenter:
+            [toast showFromCenterOffset:offset];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 + (void)showWithImage:(UIImage *)image text:(NSString *)text {
     IFToastView *toast = [[IFToastView alloc] initWithImage:image text:text];
     toast.duration = displayDuration;
-    [toast show];
-}
-
-+ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration {
-    IFToastView *toast = [[IFToastView alloc] initWithText:text];
-    toast.duration = duration;
-    [toast show];
-}
-
-+ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration userEnable:(BOOL)userEnable {
-    IFToastView *toast = [[IFToastView alloc] initWithText:text];
-    toast.duration = duration;
-    toast.bgView.userInteractionEnabled = userEnable;
-    toast.duration = duration;
-    [toast show];
-}
-
-+ (void)showTopWithText:(NSString *)text {
-    [IFToastView showTopWithText:text topOffset:100.0 duration:displayDuration];
-}
-
-+ (void)showTopWithText:(NSString *)text duration:(CGFloat)duration {
-    [IFToastView showTopWithText:text topOffset:100 duration:duration];
-}
-
-+ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset {
-    [IFToastView showTopWithText:text topOffset:topOffset duration:displayDuration];
-}
-
-+ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset duration:(CGFloat)duration {
-    IFToastView *toast = [[IFToastView alloc] initWithText:text];
-    toast.duration = duration;
-    [toast showFromTopOffset:topOffset];
-}
-
-+ (void)showBottomWithText:(NSString *)text {
-    [IFToastView showBottomWithText:text bottomOffset:100 duration:displayDuration];
-}
-
-+ (void)showBottomWithText:(NSString *)text duration:(CGFloat)duration {
-    [IFToastView showBottomWithText:text bottomOffset:100 duration:duration];
-}
-
-+ (void)showBottomWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset {
-    [IFToastView showTopWithText:text topOffset:bottomOffset duration:displayDuration];
-}
-
-+ (void)showBottomWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset duration:(CGFloat)duration {
-    IFToastView *toast = [[IFToastView alloc] initWithText:text];
-    toast.duration = duration;
-    [toast showFromBottonOffset:bottomOffset];
+    [toast showFromCenterOffset:0];
 }
 
 - (void)showGifCenter {
@@ -240,10 +241,10 @@ static CGFloat displayDuration = 2.0;
         return;
     }
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    self.contentView.center = window.center;
     [window addSubview:self.bgView];
     [window addSubview:self.contentView];
     [self showAnimation];
-    
 }
 
 - (void)showInView:(UIView *)view {
@@ -260,6 +261,7 @@ static CGFloat displayDuration = 2.0;
     if (![self shouldShowToast]) {
         return;
     }
+    self.contentView.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
     [view addSubview:self.bgView];
     [view addSubview:self.contentView];
     [self showAnimation];
@@ -270,8 +272,10 @@ static CGFloat displayDuration = 2.0;
     [self.contentView removeFromSuperview];
 }
 
-
-
+- (void)setUserEnable:(BOOL)userEnable {
+    _userEnable = userEnable;
+    self.bgView.userInteractionEnabled = userEnable;
+}
 
 
 #pragma mark - getter

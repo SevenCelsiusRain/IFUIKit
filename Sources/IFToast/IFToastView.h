@@ -8,30 +8,29 @@
 #import <UIKit/UIKit.h>
 #import <YYImage/YYImage.h>
 
-@interface IFToastView : NSObject
+typedef NS_ENUM(NSInteger, IFToastPositionType) {
+    IFToastPositionTypeTop,
+    IFToastPositionTypeCenter,
+    IFToastPositionTypeBottom
+};
 
-+ (void)showCenterWithText:(NSString *)text;
+@interface IFToastView : NSObject
+/*!默认 2s*/
+@property (nonatomic, assign) CGFloat duration;
+/*!默认 NO*/
+@property (nonatomic, assign) BOOL userEnable;
+
+//@property (nonatomic, strong) UIColor *
 
 + (void)showWithImage:(UIImage *)image text:(NSString *)text;
 
-+ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration;
++ (void)showWithText:(NSString *)text positionType:(IFToastPositionType)positionType;
 
-+ (void)showCenterWithText:(NSString *)text duration:(CGFloat)duration userEnable:(BOOL)userEnable;
++ (void)showWithText:(NSString *)text duration:(CGFloat)duration positionType:(IFToastPositionType)positionType;
 
-+ (void)showTopWithText:(NSString *)text;
++ (void)showWithText:(NSString *)text duration:(CGFloat)duration offset:(CGFloat)offset positionType:(IFToastPositionType)positionType;
 
-+ (void)showTopWithText:(NSString *)text duration:(CGFloat)duration;
-
-+ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset;
-
-+ (void)showTopWithText:(NSString *)text topOffset:(CGFloat)topOffset duration:(CGFloat)duration;
-
-+ (void)showBottomWithText:(NSString *)text;
-
-+ (void)showBottomWithText:(NSString *)text duration:(CGFloat)duration;
-
-+ (void)showBottomWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset duration:(CGFloat)duration;
-
++ (void)showWithText:(NSString *)text duration:(CGFloat)duration offset:(CGFloat)offset userEnable:(BOOL)userEnable positionType:(IFToastPositionType)positionType;
 
 - (void)showGifCenter;
 
@@ -47,7 +46,5 @@
 - (instancetype)initWithImage:(UIImage *)image text:(NSString *)text;
 
 - (instancetype)initWithImage:(YYImage *)image;
-
-
 
 @end

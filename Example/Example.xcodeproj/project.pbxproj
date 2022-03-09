@@ -13,6 +13,7 @@
 		7F6BB25527D597FA0000F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6BB25427D597FA0000F9CF /* Assets.xcassets */; };
 		7F6BB25827D597FA0000F9CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6BB25627D597FA0000F9CF /* LaunchScreen.storyboard */; };
 		7F6BB25B27D597FA0000F9CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6BB25A27D597FA0000F9CF /* main.m */; };
+		7F6BB27127D88EC40000F9CF /* loggingIn.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7F6BB27027D88EC40000F9CF /* loggingIn.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7F6BB25727D597FA0000F9CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6BB25927D597FA0000F9CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F6BB25A27D597FA0000F9CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7F6BB27027D88EC40000F9CF /* loggingIn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loggingIn.gif; sourceTree = "<group>"; };
 		A3E5F1929C0916E526370973 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71E6B846D2DBA72BB4C3FC1 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				7F6BB24927D597F80000F9CF /* AppDelegate.m */,
 				7F6BB24E27D597F80000F9CF /* ViewController.h */,
 				7F6BB24F27D597F80000F9CF /* ViewController.m */,
+				7F6BB27027D88EC40000F9CF /* loggingIn.gif */,
 				7F6BB25427D597FA0000F9CF /* Assets.xcassets */,
 				7F6BB25627D597FA0000F9CF /* LaunchScreen.storyboard */,
 				7F6BB25927D597FA0000F9CF /* Info.plist */,
@@ -153,6 +156,7 @@
 			files = (
 				7F6BB25827D597FA0000F9CF /* LaunchScreen.storyboard in Resources */,
 				7F6BB25527D597FA0000F9CF /* Assets.xcassets in Resources */,
+				7F6BB27127D88EC40000F9CF /* loggingIn.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

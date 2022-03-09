@@ -38,14 +38,16 @@
 }
 
 - (void)buttonAction {
-//    [[[IFToastView alloc] init] showToastWithText:@"开始测试"];
+//    [IFToastView showWithText:@"开始认为" positionType:IFToastPositionTypeBottom];
     
-//    [self.view showNotiToastWithText:@"开始测试"];
-//    [self.view showNotiToastWithText:@"开始测试" image:[UIImage imageNamed:@"if_server_bgImg"]];
-//    [IFToastView showTopWithText:@"开始认为是对的"];
-//    [IFToastView showWithImage:[UIImage imageNamed:@"if_server_bgImg"] text:@"开始认为是对的"];
-    IFToastView *toast = [[IFToastView alloc] initWithText:@"开始认为"];
-    [toast showInView:self.contentView];
+//    [self.view if_showTip:@"成功了" imageName:@"if_server_door" type:IFProgressHUDShowTypeSuccess];
+    
+//    IFToastView *toast = [[IFToastView alloc] initWithImage:[YYImage imageNamed:@"loggingIn"]];
+//    [toast showGifCenter];
+//    [toast showGifInView:self.contentView];
+    
+//    IFToastView *toast = [[IFToastView alloc] initWithText:@"开始认为"];
+//    [toast showInView:self.contentView];
     
 }
 
