@@ -15,16 +15,18 @@ typedef NS_ENUM(NSInteger, IFToastPositionType) {
 };
 
 @interface IFToastView : NSObject
-/*!默认 2s*/
+/*!展示时长 默认 2s*/
 @property (nonatomic, assign) CGFloat duration;
-/*!默认 NO*/
+/*!是否可交互 默认 NO*/
 @property (nonatomic, assign) BOOL userEnable;
-/*!默认 black alpha 0.8*/
+/*!toast 颜色 默认 black alpha 0.8*/
 @property (nonatomic, strong) UIColor *contentColor;
-/*!默认 clear*/
+/*!蒙板颜色 默认 clear*/
 @property (nonatomic, strong) UIColor *maskColor;
-/*!默认 white*/
+/*!文本颜色 默认 white*/
 @property (nonatomic, strong) UIColor *textColor;
+/*!文本字体 默认 16*/
+@property (nonatomic, strong) UIFont *textFont;
 
 /// 显示toast在中间
 /// @param image 图片
@@ -60,18 +62,15 @@ typedef NS_ENUM(NSInteger, IFToastPositionType) {
 /// 显示toast 在中间
 - (void)showInCenter;
 
-
 /// 显示toast
 /// @param view 承载视图
 - (void)showInView:(UIView *)view;
-
 
 /// 隐藏（无动画）
 - (void)dismissToast;
 
 /// 隐藏（有动画）
 - (void)hideAnimation;
-
 
 /// 构建 toast
 /// @param text 文本
@@ -84,6 +83,13 @@ typedef NS_ENUM(NSInteger, IFToastPositionType) {
 
 /// 构建 toast
 /// @param image 图片（YYImage 类型）
+/// tip:gif 图尺寸固定 30
 - (instancetype)initWithImage:(YYImage *)image;
+
+/// 构建toast
+/// @param image image 图片（YYImage 类型）
+/// @param text 文本
+/// tip: GIF 尺寸随图
+- (instancetype)initWithYYImage:(YYImage *)image text:(NSString *)text;
 
 @end

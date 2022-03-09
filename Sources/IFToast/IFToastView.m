@@ -31,6 +31,7 @@ static CGFloat displayDuration = 2.0;
         _textColor = UIColor.whiteColor;
         _contentColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
         _maskColor = UIColor.clearColor;
+        _textFont = [UIFont systemFontOfSize:16];
     }
     return self;
 }
@@ -59,6 +60,14 @@ static CGFloat displayDuration = 2.0;
     return self;
 }
 
+- (instancetype)initWithYYImage:(YYImage *)image text:(NSString *)text {
+    self = [self init];
+    if (self) {
+        [self setupWithYYImage:image text:text];
+    }
+    return self;
+}
+
 
 #pragma mark - private methods
 
@@ -71,7 +80,7 @@ static CGFloat displayDuration = 2.0;
         self.imageView.image = image;
     }
     
-    CGRect textRect = [text boundingRectWithSize:CGSizeMake(280, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
+    CGRect textRect = [text boundingRectWithSize:CGSizeMake(280, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.textFont} context:nil];
     
     CGFloat selfWidth = (imageWidth > textRect.size.width ? imageWidth:textRect.size.width) + 50;
     CGFloat selfHeight = imageHeight + textRect.size.height + 20;
@@ -92,6 +101,7 @@ static CGFloat displayDuration = 2.0;
 }
 
 - (void)setupViewWithImage:(YYImage *)image {
+    
     self.yyImageView.image = image;
     self.bgView.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height);
     
@@ -100,6 +110,34 @@ static CGFloat displayDuration = 2.0;
     [self.contentView addSubview:self.yyImageView];
     self.yyImageView.frame = CGRectMake(0, 0, width, width);
     self.yyImageView.center = self.contentView.center;
+}
+
+- (void)setupWithYYImage:(YYImage *)image text:(NSString *)text {
+    CGFloat imageWidth = 0;
+    CGFloat imageHeight = 0;
+    if (image) {
+        imageWidth = image.size.width;
+        imageHeight = image.size.height;
+        self.yyImageView.image = image;
+    }
+    
+    CGRect textRect = [text boundingRectWithSize:CGSizeMake(280, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.textFont} context:nil];
+    
+    CGFloat selfWidth = (imageWidth > textRect.size.width ? imageWidth:textRect.size.width) + 50;
+    CGFloat selfHeight = imageHeight + textRect.size.height + 20;
+    
+    self.yyImageView.frame = CGRectMake((selfWidth - imageWidth)/2.0, 5, imageWidth, imageHeight);
+    CGFloat yAxis = CGRectGetMaxY(self.yyImageView.frame) + 10;
+    CGFloat textH = textRect.size.height;
+    if (imageWidth == 0 && imageHeight == 0) {
+        yAxis = 0;
+        textH = selfHeight;
+    }
+    self.textLabel.text = text;
+    self.textLabel.frame = CGRectMake(0, yAxis, selfWidth, textH);
+    self.contentView.frame = CGRectMake(0, 0, selfWidth, selfHeight);
+    [self.contentView addSubview:self.yyImageView];
+    [self.contentView addSubview:self.textLabel];
 }
 
 - (BOOL)shouldShowToast {
@@ -283,7 +321,7 @@ static CGFloat displayDuration = 2.0;
         _textLabel = [UILabel new];
         _textLabel.textColor = self.textColor;
         _textLabel.textAlignment = NSTextAlignmentCenter;
-        _textLabel.font = [UIFont systemFontOfSize:16];
+        _textLabel.font = self.textFont;
         _textLabel.numberOfLines = 0;
     }
     return _textLabel;
