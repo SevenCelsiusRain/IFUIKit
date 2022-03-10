@@ -5,12 +5,13 @@
 //  Created by MrGLZh on 2022/3/7.
 //
 
-#import <IFUIKit.h>
+
 #import "ViewController.h"
+#import "DetailController.h"
 
-
-@interface ViewController ()
-@property (nonatomic, strong) UIView *contentView;
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -22,66 +23,49 @@
     [self setupViews];
 }
 
+#pragma mark - private methods
 - (void)setupViews {
-    self.view.backgroundColor = UIColor.whiteColor;
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"测试" forState:UIControlStateNormal];
-    button.frame = CGRectMake(100, 100, 100, 50);
-    button.backgroundColor = UIColor.lightGrayColor;
-    [button setTitleColor:UIColor.redColor forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    
-    self.contentView.frame = CGRectMake(0, 260, UIScreen.mainScreen.bounds.size.width, 400);
-//    [self.view addSubview:self.contentView];
+    self.title = @"IFUIKit Demo";
+    [self.view addSubview:self.tableView];
+    self.tableView.frame = UIScreen.mainScreen.bounds;
 }
 
-- (void)buttonAction {
-    
-    NSString *version = [IFAlertController sdkVersion];
-    
-    // IFNotiToast 使用
-    [self.view showNotiToastWithConfig:^(IFNotiToastConfig *config) {
-        config.text = @"开始认为";
-        config.image = [UIImage imageNamed:@"if_server_door"];
-        config.subtitleText = @"测试使用";
-        config.imageContentMode = UIViewContentModeScaleAspectFit;
-        config.duration = 50;
-//        config.toastType = CRToastTypeCustom;
-        config.preferredHeight = 200;
-//        config.customBackgroundView = self.contentView;
-        CRToastInteractionResponder *tap = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeTap automaticallyDismiss:YES block:^(CRToastInteractionType interactionType) {
-            NSLog(@"");
-        }];
-        config.responder = @[tap];
-    }];
-    
-    // MARK: IFToastView 使用
-//    [IFToastView showWithText:@"开始认为" positionType:IFToastPositionTypeBottom];
-    
-//    IFToastView *toast = [[IFToastView alloc] initWithImage:[YYImage imageNamed:@"loggingIn"]];
-//    IFToastView *toast = [[IFToastView alloc] initWithYYImage:[YYImage imageNamed:@"loggingIn"] text:@"开始加载，耐心等待"];
-//    toast.maskColor = [UIColor.yellowColor colorWithAlphaComponent:0.1];
-//    toast.contentColor = [UIColor.blueColor colorWithAlphaComponent:0.5];
-//    [toast showInCenter];
-//    [toast showInView:self.contentView];
-    
-//    IFToastView *toast = [[IFToastView alloc] initWithText:@"开始认为"];
-//    toast.textColor = UIColor.yellowColor;
-//    [toast showInView:self.contentView];
-    
-    // MARK: hud 使用
-    //    [self.view if_showTip:@"成功了" imageName:@"if_server_door" type:IFProgressHUDShowTypeSuccess];
+
+#pragma mark -delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSource.count;
 }
 
-- (UIView *)contentView {
-    if (!_contentView) {
-        _contentView = [UIView new];
-        _contentView.backgroundColor = UIColor.redColor;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = self.dataSource[indexPath.row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DetailController *detailVC = [[DetailController alloc] init];
+    detailVC.type = indexPath.row;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+
+#pragma mark - getter
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.rowHeight = 50;
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
     }
-    return _contentView;
+    return _tableView;
 }
 
+- (NSArray *)dataSource {
+    return @[@"toast 提示", @"alert", @"hud", @"emptyview"];
+}
 
 @end

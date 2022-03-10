@@ -24,6 +24,7 @@ static char IFEmptyViewKey;
 // MARK: 显示空视图
 - (void)if_showEmptyView:(IFEmptyViewBlock)emptyViewBlock {
     [self.emptyView hideAllOperationButton];
+    self.emptyView.hidden = NO;
     [self addSubview:self.emptyView];
     [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).insets(UIEdgeInsetsZero);
@@ -36,6 +37,7 @@ static char IFEmptyViewKey;
 
 - (void)if_showEmptyView:(IFEmptyViewBlock)emptyViewBlock selectIndex:(IFUserOperationHandler)operationHandler {
     [self.emptyView hideAllOperationButton];
+    self.emptyView.hidden = NO;
     [self addSubview:self.emptyView];
     [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).insets(UIEdgeInsetsZero);
