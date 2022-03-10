@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+//! -- Version: 0.0.1.2 -- !//
+
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, IFAlertDirectionType) {
     IFAlertDirectionTypeTop, // 上方
@@ -46,6 +48,9 @@ typedef NS_ENUM(NSUInteger, IFAlertDirectionType) {
 - (instancetype)initWithController:(UIViewController *)controller radius:(CGFloat)radius direction:(IFAlertDirectionType)direction;
 
 - (void)dismiss;
+
+/// SDK 版本
++ (NSString *)sdkVersion;
 
 @end
 

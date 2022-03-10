@@ -61,6 +61,12 @@
 }
 
 
+#pragma mark - public methods
++ (NSString *)sdkVersion {
+    return @"0.0.1.2";
+}
+
+
 #pragma mark - init
 
 - (instancetype)init {

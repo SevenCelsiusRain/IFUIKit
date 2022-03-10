@@ -39,6 +39,8 @@
 
 - (void)buttonAction {
     
+    NSString *version = [IFAlertController sdkVersion];
+    
     // IFNotiToast 使用
     [self.view showNotiToastWithConfig:^(IFNotiToastConfig *config) {
         config.text = @"开始认为";

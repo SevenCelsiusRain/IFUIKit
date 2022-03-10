@@ -8,6 +8,8 @@
 #ifndef IFEmpty_h
 #define IFEmpty_h
 
+//! -- Version: 0.0.1.2 -- !//
+
 #import <IFEmptyView/IFEmptyView.h>
 #import <IFEmptyView/UIView+IFEmptyView.h>
 
