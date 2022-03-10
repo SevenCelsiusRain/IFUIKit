@@ -1,14 +1,15 @@
-# Uncomment the next line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git' #官方仓库地址
+source 'http://10.255.35.174/iov-ios/IFSpecs.git'
 platform :ios, '9.0'
 
 target 'Example' do
-#  pod 'IFUIKit'
- pod 'IFUIKit', :path => '../'
-
- pod 'IFToast', :path => '../'
- pod 'IFTableView', :path => '../'
- pod 'IFHUD', :path => '../'
- pod 'IFEmptyView', :path => '../'
- pod 'IFAlert', :path => '../'
+  pod 'IFUIKit'
+# pod 'IFUIKit', :path => '../'
+#
+# pod 'IFToast', :path => '../'
+# pod 'IFTableView', :path => '../'
+# pod 'IFHUD', :path => '../'
+# pod 'IFEmptyView', :path => '../'
+# pod 'IFAlert', :path => '../'
 
 end
