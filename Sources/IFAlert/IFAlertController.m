@@ -42,7 +42,9 @@
     [self show];
     if (self.autoDismissDuration > 0) {
         dispatch_after(DISPATCH_TIME_NOW + self.autoDismissDuration, dispatch_get_main_queue(), ^{
-            [self dismiss];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismiss];
+            });
         });
     }
 }
@@ -58,12 +60,6 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
-}
-
-
-#pragma mark - public methods
-+ (NSString *)sdkVersion {
-    return @"0.0.1.2";
 }
 
 
@@ -235,7 +231,9 @@
 - (void)show {
     NSTimeInterval animatedTime = 0;
     if (self.animated) {
-        [self.view layoutIfNeeded];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view layoutIfNeeded];
+        });
         animatedTime = 0.3;
     }
     switch (self.direction) {
@@ -280,7 +278,9 @@
     }];
     
     [UIView animateWithDuration:animatedTime delay:0 usingSpringWithDamping:2.0 initialSpringVelocity:1.5 options:UIViewAnimationOptionTransitionFlipFromTop animations:^{
-        [self.view layoutIfNeeded];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view layoutIfNeeded];
+        });
     } completion:nil];
 }
 
@@ -330,7 +330,9 @@
         self.blurView.backgroundColor = UIColor.clearColor;
     }];
     [UIView animateWithDuration:animatedTime delay:0 usingSpringWithDamping:2 initialSpringVelocity:1.5 options:UIViewAnimationOptionTransitionFlipFromTop animations:^{
-        [self.view layoutIfNeeded];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view layoutIfNeeded];
+        });
     } completion:^(BOOL finished) {
         [self.contentView removeFromSuperview];
         [self dismissViewControllerAnimated:false completion:^{
@@ -370,7 +372,9 @@
 // MARK: 消失
 - (void)dismissAction {
     if (self.tapDismiss) {
-        [self dismiss];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismiss];
+        });
     }
 }
 
