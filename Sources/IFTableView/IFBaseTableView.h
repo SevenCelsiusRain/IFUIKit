@@ -78,8 +78,6 @@ NS_ASSUME_NONNULL_BEGIN
 */
 - (void)hideFooterView;
 
-
-
 @end
 
 NS_ASSUME_NONNULL_END

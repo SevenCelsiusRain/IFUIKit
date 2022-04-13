@@ -7,6 +7,7 @@
 
 #import <IFUIKit.h>
 #import "DetailController.h"
+#import <IFAlertController.h>
 
 @interface DetailController ()
 

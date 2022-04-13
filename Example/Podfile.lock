@@ -29,16 +29,14 @@ PODS:
   - YYImage/Core (1.0.4)
 
 DEPENDENCIES:
-  - IFUIKit
+  - IFAlert (from `../`)
+  - IFEmptyView (from `../`)
+  - IFHUD (from `../`)
+  - IFTableView (from `../`)
+  - IFToast (from `../`)
+  - IFUIKit (from `../`)
 
 SPEC REPOS:
-  http://10.255.35.174/iov-ios/IFSpecs.git:
-    - IFAlert
-    - IFEmptyView
-    - IFHUD
-    - IFTableView
-    - IFToast
-    - IFUIKit
   https://github.com/CocoaPods/Specs.git:
     - CRToast
     - Masonry
@@ -47,20 +45,34 @@ SPEC REPOS:
     - SDWebImage
     - YYImage
 
+EXTERNAL SOURCES:
+  IFAlert:
+    :path: "../"
+  IFEmptyView:
+    :path: "../"
+  IFHUD:
+    :path: "../"
+  IFTableView:
+    :path: "../"
+  IFToast:
+    :path: "../"
+  IFUIKit:
+    :path: "../"
+
 SPEC CHECKSUMS:
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
-  IFAlert: 2a5ab12297a0ed89cb336e42e911a3722fcefd0a
-  IFEmptyView: a896e55a8c6a3b5588c56f416a8d66cc27b49cba
-  IFHUD: cd50cd912f5a9c49eb4376eec7250dba546abc22
-  IFTableView: 4fd93027fcf2decbc871e8920857ef4d78b620a4
-  IFToast: 66b4052e2bef9ce79bf8c57a16f4c7bf0d9235be
-  IFUIKit: 1b03ab380c4eba96f53561e689b34c316223e019
+  IFAlert: e7b550f685346496cf3f0dddb063b071d8d466ca
+  IFEmptyView: 5b4dc96105012a138e59bc65c5bb28b9b1b4aa2d
+  IFHUD: cdc6118cdf25550e892376e173ac004a2cdea48d
+  IFTableView: 539c33bf48d311166b060eddff55f2624c25a31e
+  IFToast: 0ea44b2f991ef739ac21ba55007d710f15c860d3
+  IFUIKit: 54632e709d2a730e431b7ecdf9b30955822a36fb
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 2dc5d52a96cec6d041f0ea90860f1fce0a94835f
+PODFILE CHECKSUM: 6d3d630c2c33524aaf2f4d27826d10f975d8df02
 
 COCOAPODS: 1.11.2
