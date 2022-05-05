@@ -219,7 +219,7 @@
         _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _centerButton.layer.borderColor = [UIColor redColor].CGColor;
         _centerButton.layer.borderWidth = 1.0;
-        _centerButton.layer.cornerRadius = 23;
+        _centerButton.layer.cornerRadius = 2;
         _centerButton.clipsToBounds = YES;
         _centerButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_centerButton setTitleColor:UIColor.redColor forState:UIControlStateNormal];
@@ -233,7 +233,7 @@
         _leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftButton.layer.borderColor = [UIColor redColor].CGColor;
         _leftButton.layer.borderWidth = 1.0;
-        _leftButton.layer.cornerRadius = 20;
+        _leftButton.layer.cornerRadius = 2;
         _leftButton.clipsToBounds = YES;
         _leftButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_leftButton setTitleColor:UIColor.redColor forState:UIControlStateNormal];
@@ -248,7 +248,7 @@
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightButton.layer.borderColor = [UIColor redColor].CGColor;
         _rightButton.layer.borderWidth = 1.0;
-        _rightButton.layer.cornerRadius = 20;
+        _rightButton.layer.cornerRadius = 2;
         _rightButton.clipsToBounds = YES;
         _rightButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_rightButton setTitleColor:UIColor.redColor forState:UIControlStateNormal];
