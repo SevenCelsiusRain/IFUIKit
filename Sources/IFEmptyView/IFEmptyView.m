@@ -70,7 +70,7 @@
         case IFEmptyViewTypeEmpty:
             imageName = @"if_empty_empty";
             tipText = @"此处暂无内容，去看看别的";
-            titleStr = @"前往首页";
+            titleStr = @"回到首页";
             [self configCenterBtnTheme];
             break;
             
@@ -166,9 +166,8 @@
         [self.centerButton setTitleColor:[UIColor colorWithRed:33/255.f green:33/255.f blue:33/255.f alpha:1] forState:UIControlStateNormal];
     }else {
         self.centerButton.layer.borderWidth = 1;
-        self.centerButton.layer.borderColor = [UIColor colorWithRed:222/255.f green:222/255.f blue:225/255.f alpha:1].CGColor;
-        self.centerButton.backgroundColor = [UIColor colorWithRed:255/255.f green:68/255.f blue:0/255.f alpha:1];
-        [self.centerButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+        self.centerButton.layer.borderColor = [UIColor colorWithRed:255/255.f green:68/255.f blue:0 alpha:1].CGColor;
+        [self.centerButton setTitleColor:[UIColor colorWithRed:255/255.F green:68/255.F blue:0 alpha:1] forState:UIControlStateNormal];
     }
 }
 
