@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-//! -- Version: 0.0.1.3 -- !//
+//! -- Version: 0.0.1.4 -- !//
 
 //! Project version number for IFUIKit.
 FOUNDATION_EXPORT double IFUIKitVersionNumber;

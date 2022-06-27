@@ -182,7 +182,7 @@
 }
 
 - (void)hudInView {
-        [self.contentView if_showLoadingView:nil];
+        [self.contentView if_showLoadingView:nil minDuration:10];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self.contentView if_hideLoadingView];
         });

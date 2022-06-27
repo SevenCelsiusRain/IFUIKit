@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "IFUIKit"
-  spec.version      = "0.0.1.3"
+  spec.version      = "0.0.1.4"
   spec.summary      = "UI 组件"
 
   # This description is used to generate tags and improve search results.

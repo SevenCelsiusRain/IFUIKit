@@ -76,6 +76,23 @@
     [self bringSubviewToFront:loadingHUD];
 }
 
+- (void)if_showLoadingView:(NSString *)message minDuration:(CGFloat)minDuration {
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDLoadingTag];
+    if (!loadingHUD) {
+        loadingHUD = [IFProgressHUD showLoadingText:message ToView:self];
+        if (minDuration > 0) {
+            loadingHUD.minShowTime = minDuration;
+        }
+        loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        loadingHUD.tag = IFProgressHUDLoadingTag;
+        [loadingHUD setTextColor:[UIColor whiteColor]];
+        [loadingHUD setBezelViewBgColor:[UIColor colorWithWhite:0 alpha:0.7]];
+        [loadingHUD setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2]];
+    }
+    loadingHUD.detailsLabel.text = message;
+    [self bringSubviewToFront:loadingHUD];
+}
+
 - (void)if_hideLoadingView {
     IFProgressHUD * loadingHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDLoadingTag];
     if (loadingHUD) {

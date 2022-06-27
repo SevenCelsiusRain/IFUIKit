@@ -29,6 +29,13 @@
 - (void)if_showLoadingView:(NSString *)message;
 
 /**
+ 显示loading (多次调用，后者将覆盖前者，仅保留最后一个)
+ @param message 提示文案
+ @param minDuration 最短显示时间
+ */
+- (void)if_showLoadingView:(NSString *)message minDuration:(CGFloat)minDuration;
+
+/**
  隐藏loading
  */
 - (void)if_hideLoadingView;
