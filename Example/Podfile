@@ -3,6 +3,9 @@ source 'http://10.255.35.174/iov-ios/IFSpecs.git'
 platform :ios, '9.0'
 
 target 'Example' do
+pod 'SVProgressHUD'
+#pod 'Toast'
+#pod 'lottie-ios', '2.5.3'
 #  pod 'IFUIKit'
  pod 'IFUIKit', :path => '../'
 #

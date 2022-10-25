@@ -9,9 +9,12 @@
 
 
 typedef NS_ENUM(NSUInteger, IFEmptyViewType){
-    IFEmptyViewTypeNetless,
-    IFRefreshTypeContentEmpty,
-    IFEmptyViewTypeEmpty
+    IFEmptyViewTypeNetless, // 弱网/无网
+    IFEmptyViewTypeContent, // 无内容
+    IFEmptyViewTypeData,  // 无数据
+    IFEmptyViewTypeDelete, // 内容被删除
+    IFEmptyViewTypeSearch, // 搜索无结果
+    IFEmptyViewTypeEmpty // 空白页
 };
 @interface IFEmptyView : UIView
 /*!距离顶部间距*/

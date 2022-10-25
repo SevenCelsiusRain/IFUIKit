@@ -100,5 +100,35 @@
     }
 }
 
+- (void)if_showLottieLoadingView:(NSString *)message {
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDLoadingTag];
+    if (!loadingHUD) {
+        loadingHUD = [IFProgressHUD showLottieLoadingText:message toView:self];
+        loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        loadingHUD.tag = IFProgressHUDLoadingTag;
+        [loadingHUD setTextColor:[UIColor whiteColor]];
+        [loadingHUD setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.1]];
+    }
+    loadingHUD.detailsLabel.text = message;
+    [self bringSubviewToFront:loadingHUD];
+}
+
+- (void)if_showLottieLoadingView:(NSString *)message maskColor:(UIColor *)maskColor {
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self viewWithTag:IFProgressHUDLoadingTag];
+    if (!loadingHUD) {
+        loadingHUD = [IFProgressHUD showLottieLoadingText:message toView:self];
+        loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        loadingHUD.tag = IFProgressHUDLoadingTag;
+        [loadingHUD setTextColor:[UIColor whiteColor]];
+        UIColor *tempColor = [UIColor colorWithWhite:0 alpha:0.1];
+        if (maskColor) {
+            tempColor = maskColor;
+        }
+        [loadingHUD setBackgroundColor:tempColor];
+    }
+    loadingHUD.detailsLabel.text = message;
+    [self bringSubviewToFront:loadingHUD];
+}
+
 
 @end

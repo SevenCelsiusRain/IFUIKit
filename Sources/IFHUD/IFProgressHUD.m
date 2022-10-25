@@ -7,6 +7,12 @@
 
 #import "IFProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "IFCustomHUD.h"
+
+@interface IFProgressHUD ()
+@property (nonatomic, strong) IFCustomHUD *customHud;
+
+@end
 
 @implementation IFProgressHUD
 
@@ -176,6 +182,24 @@
     return hud;
 }
 
++ (IFProgressHUD *)showLottieLoadingText:(NSString *)text toView:(UIView *)view; {
+    UIView *supView = view ? view : [self getLastWindow];
+    IFProgressHUD *hud = [[IFProgressHUD alloc] initWithView:supView];
+    hud.removeFromSuperViewOnHide = YES;
+    [supView addSubview:hud];
+    hud.graceTime = 20;
+    if (text.length > 0) {
+        hud.detailsLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+        hud.detailsLabel.text = text;
+    }
+    hud.mode = [hud convertHUDMode:IFProgressHUDModeCustomView];
+    hud.customView = hud.customHud;
+    [hud.customHud play];
+    hud.removeFromSuperViewOnHide = YES;
+    [hud showAnimated:YES];
+    return hud;
+}
+
 - (MBProgressHUDMode)convertHUDMode:(IFProgressHUDMode)mode {
     MBProgressHUDMode hudMode = MBProgressHUDModeText;
     switch (mode) {
@@ -222,6 +246,13 @@
         }
     }
     return window;
+}
+
+- (IFCustomHUD *)customHud {
+    if (!_customHud) {
+        _customHud = [IFCustomHUD customHud];
+    }
+    return _customHud;
 }
 
 

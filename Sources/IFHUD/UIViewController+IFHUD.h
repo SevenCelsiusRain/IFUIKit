@@ -35,6 +35,10 @@
  */
 - (void)if_showLoadingView:(NSString *)message minDuration:(CGFloat)minDuration;
 
+- (void)if_showLottieLoadingView:(NSString *)message;
+
+- (void)if_showLottieLoadingView:(NSString *)message maskColor:(UIColor *)maskColor;
+
 /**
  隐藏loading
  */

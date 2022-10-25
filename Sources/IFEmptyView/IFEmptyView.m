@@ -16,8 +16,11 @@
 @property (nonatomic, strong) UIButton *leftButton;
 @property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, strong) UILabel *infoLabel;
-
 @property (nonatomic, assign) IFEmptyViewType type;
+
+@property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, copy) NSString *infoTextStr;
+@property (nonatomic, copy) NSString *tipTextStr;
 
 @end
 
@@ -57,39 +60,22 @@
 
 - (void)setContentWithType:(IFEmptyViewType)type infoText:(NSString *)infoText {
     self.type = type;
-    NSString *imageName = @"";
-    NSString *tipText = @"";
-    NSString *titleStr = nil;
-    switch (type) {
-        case IFEmptyViewTypeNetless:
-            imageName = @"if_empty_netless";
-            tipText = @"网络不太顺畅哦，刷新一下";
-            titleStr = @"重新加载";
-            [self configCenterBtnTheme];
-            break;
-        case IFEmptyViewTypeEmpty:
-            imageName = @"if_empty_empty";
-            tipText = @"此处暂无内容，去看看别的";
-            titleStr = @"回到首页";
-            [self configCenterBtnTheme];
-            break;
-            
-        default:
-            break;
-    }
+    NSString *tipText = self.tipTextStr;
     if (infoText.length > 0) {
         tipText = infoText;
     }
-    self.imageView.image = [UIImage if_imageWithName:imageName];
+    if (self.type == IFEmptyViewTypeNetless) {
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction)];
+        [self addGestureRecognizer:tap];
+    }
+    
+    self.imageView.image = [UIImage if_imageWithName:self.imageName];
     if (tipText) {
         NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:tipText];
         NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
         paraStyle.lineSpacing = self.infoLineSpace;
         [attri addAttributes:@{NSParagraphStyleAttributeName:paraStyle} range:NSMakeRange(0, tipText.length)];
         self.infoLabel.attributedText = attri;
-    }
-    if (titleStr) {
-        [self.centerButton setTitle:titleStr forState:UIControlStateNormal];
     }
 }
 
@@ -108,13 +94,13 @@
     self.rightButton.hidden = YES;
     
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(250, 187));
+        make.centerX.equalTo(self);
+        make.bottom.equalTo(self.infoLabel.mas_top);
+        make.size.mas_equalTo(CGSizeMake(285, 210));
     }];
     
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imageView.mas_bottom).offset(27);
-        make.centerX.equalTo(self);
+        make.center.equalTo(self);
     }];
     
     [self.leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -137,26 +123,6 @@
     
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    CGFloat tempHeight = self.frame.size.height;
-    if (tempHeight > 0) {
-        CGFloat topOffset = self.topPadding;
-        if (topOffset == 0) {
-            topOffset = tempHeight * 0.3;
-        }
-        [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(topOffset);
-            make.centerX.equalTo(self);
-            make.size.mas_equalTo(CGSizeMake(178, 178));
-        }];
-        CGFloat btnWidth = self.buttonWidth == 0? 110:self.buttonWidth;
-        [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(btnWidth, 40));
-        }];
-    }
-}
-
 - (void)configCenterBtnTheme {
     self.centerButton.hidden = NO;
     self.infoLabel.hidden = NO;
@@ -172,6 +138,12 @@
 }
 
 #pragma mark - event handler
+
+- (void)tapGestureAction {
+    if (self.userOperationBlock) {
+        self.userOperationBlock(0);
+    }
+}
 
 - (void)centerBtnAction {
     if (self.userOperationBlock) {
@@ -256,6 +228,64 @@
     return _rightButton;
 }
 
+- (NSString *)imageName {
+    NSString *tempStr = @"";
+    switch (self.type) {
+        case IFEmptyViewTypeNetless:
+            tempStr = @"if_empty_netless";
+            break;
+            
+        case IFEmptyViewTypeData:
+            tempStr = @"if_empty_data";
+            break;
+            
+        case IFEmptyViewTypeDelete:
+            tempStr = @"if_empty_delete";
+            break;
+            
+        case IFEmptyViewTypeSearch:
+            tempStr = @"if_empty_search";
+            break;
+            
+        case IFEmptyViewTypeContent:
+            tempStr = @"if_empty_content";
+            break;
+            
+        default:
+            break;
+    }
+    return tempStr;
+}
+
+- (NSString *)tipTextStr {
+    NSString *tipStr = @"";
+    switch (self.type) {
+        case IFEmptyViewTypeNetless:
+            tipStr = @"当前网络加载缓慢，点击页面刷新重试";
+            break;
+            
+        case IFEmptyViewTypeData:
+            tipStr = @"此处暂无内容，去看看别的";
+            break;
+            
+        case IFEmptyViewTypeSearch:
+            tipStr = @"没有符合条件的结果";
+            break;
+            
+        case IFEmptyViewTypeContent:
+            tipStr = @"暂无内容";
+            break;
+            
+        case IFEmptyViewTypeDelete:
+            tipStr = @"此处暂无内容，去看看别的";
+            break;
+            
+        default:
+            break;
+    }
+    return tipStr;
+}
+
 
 #pragma mark - setter
 
@@ -266,12 +296,29 @@
 
 - (void)setTopPadding:(CGFloat)topPadding {
     _topPadding = topPadding;
-    [self setNeedsDisplay];
+    if (topPadding == 0) {
+        return;
+    }
+    [self.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(topPadding);
+        make.centerX.equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(285, 210));
+    }];
+    [self.infoLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.imageView.mas_bottom);
+        make.centerX.equalTo(self);
+    }];
 }
 
 - (void)setButtonWidth:(CGFloat)buttonWidth {
     _buttonWidth = buttonWidth;
+    if (buttonWidth == 0) {
+        return;
+    }
     [self setNeedsDisplay];
+    [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(buttonWidth, 40));
+    }];
 }
 
 - (void)setInfoFont:(UIFont *)infoFont {
@@ -290,4 +337,5 @@
     self.leftButton.titleLabel.font = buttonFont;
     self.rightButton.titleLabel.font = buttonFont;
 }
+
 @end

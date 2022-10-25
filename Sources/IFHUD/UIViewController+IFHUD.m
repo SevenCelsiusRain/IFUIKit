@@ -83,4 +83,51 @@
     }
 }
 
+- (void)if_showLoadingView:(NSString *)message minDuration:(CGFloat)minDuration {
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self.view viewWithTag:IFProgressHUDLoadingTag];
+    if (!loadingHUD) {
+        loadingHUD = [IFProgressHUD showLoadingText:message ToView:self.view];
+        if (minDuration > 0) {
+            loadingHUD.minShowTime = minDuration;
+        }
+        loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        loadingHUD.tag = IFProgressHUDLoadingTag;
+        [loadingHUD setTextColor:[UIColor whiteColor]];
+        [loadingHUD setBezelViewBgColor:[UIColor colorWithWhite:0 alpha:0.7]];
+        [loadingHUD setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2]];
+    }
+    loadingHUD.detailsLabel.text = message;
+    [self.view bringSubviewToFront:loadingHUD];
+}
+
+- (void)if_showLottieLoadingView:(NSString *)message {
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self.view viewWithTag:IFProgressHUDLoadingTag];
+    if (!loadingHUD) {
+        loadingHUD = [IFProgressHUD showLottieLoadingText:message toView:self.view];
+        loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        loadingHUD.tag = IFProgressHUDLoadingTag;
+        [loadingHUD setTextColor:[UIColor whiteColor]];
+        [loadingHUD setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.1]];
+    }
+    loadingHUD.detailsLabel.text = message;
+    [self.view bringSubviewToFront:loadingHUD];
+}
+
+- (void)if_showLottieLoadingView:(NSString *)message maskColor:(UIColor *)maskColor {
+    IFProgressHUD * loadingHUD = (IFProgressHUD *)[self.view viewWithTag:IFProgressHUDLoadingTag];
+    if (!loadingHUD) {
+        loadingHUD = [IFProgressHUD showLottieLoadingText:message toView:self.view];
+        loadingHUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        loadingHUD.tag = IFProgressHUDLoadingTag;
+        [loadingHUD setTextColor:[UIColor whiteColor]];
+        UIColor *tempColor = [UIColor colorWithWhite:0 alpha:0.1];
+        if (maskColor) {
+            tempColor = maskColor;
+        }
+        [loadingHUD setBackgroundColor:tempColor];
+    }
+    loadingHUD.detailsLabel.text = message;
+    [self.view bringSubviewToFront:loadingHUD];
+}
+
 @end

@@ -46,5 +46,6 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'MBProgressHUD', '~> 1.2.0'
   spec.dependency 'SDWebImage'
+  spec.dependency 'lottie-ios', '2.5.3'
 
 end

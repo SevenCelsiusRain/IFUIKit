@@ -8,6 +8,7 @@
 #import <IFUIKit.h>
 #import "DetailController.h"
 #import <IFAlertController.h>
+#import "UIView+Toast.h"
 
 @interface DetailController ()
 
@@ -144,10 +145,13 @@
     
     
     // IFNotiToast
-    [self.view showNotiToastWithConfig:^(IFNotiToastConfig *config) {
-        config.text = @"测试使用";
-        config.backgroundColor = UIColor.yellowColor;
-    }];
+//    [self.view showNotiToastWithConfig:^(IFNotiToastConfig *config) {
+//        config.text = @"测试使用";
+//        config.backgroundColor = UIColor.yellowColor;
+//    }];
+    CSToastStyle *style = [CSToastManager sharedStyle];
+    style.topOffset = 200;
+    [self.view makeToast:@"我写的消息" duration:2 position:CSToastPositionTop style:style];
     
 }
 
@@ -160,17 +164,22 @@
 //        [toast dismissToast];
 //    });
     
-    IFToastView *toast = [[IFToastView alloc] initWithImage:[YYImage imageNamed:@"loggingIn"]];
-    [toast showInView:self.contentView];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [toast dismissToast];
-    });
+//    IFToastView *toast = [[IFToastView alloc] initWithImage:[YYImage imageNamed:@"loading"]];
+//    [toast showInView:self.contentView];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [toast dismissToast];
+//    });
     
 }
 
 
 // MARK: hud
 - (void)hudInController {
+    [self.view if_showLottieLoadingView:nil maskColor:UIColor.whiteColor];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 20 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self.contentView if_hideLoadingView];
+    });
+    
 //    [self if_showLoadingView:nil];
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 //        [self if_hideLoadingView];
@@ -178,12 +187,12 @@
     
 //    [self if_showSuccessTip:@"成功"];
 //    [self if_showFailTip:@"失败"];
-    [self if_showTextTip:@"提示"];
+//    [self if_showTextTip:@"提示"];
 }
 
 - (void)hudInView {
-        [self.contentView if_showLoadingView:nil minDuration:10];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self.contentView if_showLoadingView:@""];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self.contentView if_hideLoadingView];
         });
         
@@ -210,10 +219,13 @@
     [self.view if_showEmptyView:^(IFEmptyView *emptyView) {
         [emptyView setContentWithType:IFEmptyViewTypeNetless infoText:nil];
         emptyView.backgroundColor = UIColor.whiteColor;
+//        emptyView.topPadding = 50;
+    } selectIndex:^(NSInteger index) {
+        NSLog(@"");
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self.view if_hideEmptyView];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [self.view if_hideEmptyView];
+//    });
     
 }
 
@@ -224,7 +236,7 @@
         emptyView.topPadding = 20;
         [emptyView setContentWithType:IFEmptyViewTypeNetless infoText:nil];
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self.contentView if_hideEmptyView];
     });
 }

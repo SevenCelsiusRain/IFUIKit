@@ -13,6 +13,8 @@
 		7F360BF427A00E44000242F1 /* UIImage+IFEmptyBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F360BF227A00E44000242F1 /* UIImage+IFEmptyBundle.h */; };
 		7F360BF527A00E44000242F1 /* UIImage+IFEmptyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F360BF327A00E44000242F1 /* UIImage+IFEmptyBundle.m */; };
 		7F360C6727A0282D000242F1 /* IFEmptyView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F360C6627A0282D000242F1 /* IFEmptyView.bundle */; };
+		7FC5D7D82906715F00E9699D /* IFCustomHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5D7D62906715F00E9699D /* IFCustomHUD.m */; };
+		7FC5D7D92906715F00E9699D /* IFCustomHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC5D7D72906715F00E9699D /* IFCustomHUD.h */; };
 		7FD34CD3277DB77800FFD2D1 /* IFUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CD2277DB77800FFD2D1 /* IFUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD34CE1277DB8D700FFD2D1 /* IFHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CE0277DB8D700FFD2D1 /* IFHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD34CED277DB99000FFD2D1 /* IFToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD34CEC277DB99000FFD2D1 /* IFToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,6 +91,8 @@
 		7F360BF227A00E44000242F1 /* UIImage+IFEmptyBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+IFEmptyBundle.h"; sourceTree = "<group>"; };
 		7F360BF327A00E44000242F1 /* UIImage+IFEmptyBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+IFEmptyBundle.m"; sourceTree = "<group>"; };
 		7F360C6627A0282D000242F1 /* IFEmptyView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IFEmptyView.bundle; sourceTree = "<group>"; };
+		7FC5D7D62906715F00E9699D /* IFCustomHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFCustomHUD.m; sourceTree = "<group>"; };
+		7FC5D7D72906715F00E9699D /* IFCustomHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFCustomHUD.h; sourceTree = "<group>"; };
 		7FD34CCF277DB77800FFD2D1 /* IFUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IFUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD34CD2277DB77800FFD2D1 /* IFUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFUIKit.h; sourceTree = "<group>"; };
 		7FD34CDE277DB8D700FFD2D1 /* IFHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IFHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +219,8 @@
 		7FD34CDF277DB8D700FFD2D1 /* IFHUD */ = {
 			isa = PBXGroup;
 			children = (
+				7FC5D7D72906715F00E9699D /* IFCustomHUD.h */,
+				7FC5D7D62906715F00E9699D /* IFCustomHUD.m */,
 				7FD34CE0277DB8D700FFD2D1 /* IFHUD.h */,
 				7FED490327828AAE00D358E1 /* IFProgressHUD.h */,
 				7FED490427828AAE00D358E1 /* IFProgressHUD.m */,
@@ -316,6 +322,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC5D7D92906715F00E9699D /* IFCustomHUD.h in Headers */,
 				7FED490F278298FA00D358E1 /* UIView+IFHUD.h in Headers */,
 				7FED491227829B1B00D358E1 /* IFHUDMacros.h in Headers */,
 				7FED490527828AAE00D358E1 /* IFProgressHUD.h in Headers */,
@@ -708,6 +715,7 @@
 				7FED490627828AAE00D358E1 /* IFProgressHUD.m in Sources */,
 				7FED490A278290D700D358E1 /* UIViewController+IFHUD.m in Sources */,
 				7FED4910278298FA00D358E1 /* UIView+IFHUD.m in Sources */,
+				7FC5D7D82906715F00E9699D /* IFCustomHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

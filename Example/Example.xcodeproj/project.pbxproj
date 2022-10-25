@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		540445994EBA898CDC2AE2CE /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E5F1929C0916E526370973 /* libPods-Example.a */; };
+		7F2056F928E18CA40053CB78 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2056F728E18CA30053CB78 /* UIView+Toast.m */; };
 		7F6BB24A27D597F80000F9CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6BB24927D597F80000F9CF /* AppDelegate.m */; };
 		7F6BB25027D597F80000F9CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6BB24F27D597F80000F9CF /* ViewController.m */; };
 		7F6BB25527D597FA0000F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6BB25427D597FA0000F9CF /* Assets.xcassets */; };
@@ -15,10 +16,13 @@
 		7F6BB25B27D597FA0000F9CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6BB25A27D597FA0000F9CF /* main.m */; };
 		7F6BB27127D88EC40000F9CF /* loggingIn.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7F6BB27027D88EC40000F9CF /* loggingIn.gif */; };
 		7F6BB27527D9DA840000F9CF /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6BB27427D9DA830000F9CF /* DetailController.m */; };
+		7F7703032889640E000D6304 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7F7703022889640E000D6304 /* loading.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2161D8BA1A004B5F7E32AC04 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		7F2056F728E18CA30053CB78 /* UIView+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		7F2056F828E18CA40053CB78 /* UIView+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		7F6BB24527D597F80000F9CF /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6BB24827D597F80000F9CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7F6BB24927D597F80000F9CF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,6 +35,7 @@
 		7F6BB27027D88EC40000F9CF /* loggingIn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loggingIn.gif; sourceTree = "<group>"; };
 		7F6BB27327D9DA830000F9CF /* DetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
 		7F6BB27427D9DA830000F9CF /* DetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
+		7F7703022889640E000D6304 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		A3E5F1929C0916E526370973 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71E6B846D2DBA72BB4C3FC1 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +88,9 @@
 				7F6BB24F27D597F80000F9CF /* ViewController.m */,
 				7F6BB27327D9DA830000F9CF /* DetailController.h */,
 				7F6BB27427D9DA830000F9CF /* DetailController.m */,
+				7F2056F828E18CA40053CB78 /* UIView+Toast.h */,
+				7F2056F728E18CA30053CB78 /* UIView+Toast.m */,
+				7F7703022889640E000D6304 /* loading.gif */,
 				7F6BB27027D88EC40000F9CF /* loggingIn.gif */,
 				7F6BB25427D597FA0000F9CF /* Assets.xcassets */,
 				7F6BB25627D597FA0000F9CF /* LaunchScreen.storyboard */,
@@ -161,6 +169,7 @@
 			files = (
 				7F6BB25827D597FA0000F9CF /* LaunchScreen.storyboard in Resources */,
 				7F6BB25527D597FA0000F9CF /* Assets.xcassets in Resources */,
+				7F7703032889640E000D6304 /* loading.gif in Resources */,
 				7F6BB27127D88EC40000F9CF /* loggingIn.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +226,7 @@
 				7F6BB27527D9DA840000F9CF /* DetailController.m in Sources */,
 				7F6BB25027D597F80000F9CF /* ViewController.m in Sources */,
 				7F6BB24A27D597F80000F9CF /* AppDelegate.m in Sources */,
+				7F2056F928E18CA40053CB78 /* UIView+Toast.m in Sources */,
 				7F6BB25B27D597FA0000F9CF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

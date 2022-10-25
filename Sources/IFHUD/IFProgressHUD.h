@@ -73,6 +73,11 @@ typedef NS_ENUM(NSInteger, IFProgressHUDShowTipType) {
 + (IFProgressHUD *)showLoadingText:(NSString *)text ToView:(UIView*)view;;
 + (IFProgressHUD *)showLoadingText:(NSString *)text;
 
+/**
+ lottie 动画
+ */
++ (IFProgressHUD *)showLottieLoadingText:(NSString *)text toView:(UIView *)view;
+
 
 /**
  Loading提示
