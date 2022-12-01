@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  根据图片名字，从IFEmptyView.bundle中找到对应的图片对象
  */
-+ (UIImage *)if_imageWithName:(NSString *)imageName;
++ (UIImage *)if_emptyImageWithName:(NSString *)imageName;
 
 @end
 

@@ -8,6 +8,8 @@
 #import "IFEmptyView.h"
 #import <Masonry/Masonry.h>
 #import "UIImage+IFEmptyBundle.h"
+#import <IFCommonKit.h>
+#import <YYText.h>
 
 @interface IFEmptyView ()
 
@@ -15,12 +17,12 @@
 @property (nonatomic, strong) UIButton *centerButton;
 @property (nonatomic, strong) UIButton *leftButton;
 @property (nonatomic, strong) UIButton *rightButton;
-@property (nonatomic, strong) UILabel *infoLabel;
+@property (nonatomic, strong) YYLabel *infoLabel;
 @property (nonatomic, assign) IFEmptyViewType type;
 
 @property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, copy) NSString *infoTextStr;
 @property (nonatomic, copy) NSString *tipTextStr;
+@property (nonatomic, copy) NSString *tipAttriStr;
 
 @end
 
@@ -69,13 +71,32 @@
         [self addGestureRecognizer:tap];
     }
     
-    self.imageView.image = [UIImage if_imageWithName:self.imageName];
-    if (tipText) {
+    self.imageView.image = [UIImage if_emptyImageWithName:self.imageName];
+    
+    NSMutableAttributedString *attriText = [NSMutableAttributedString new];
+    if (tipText.length > 0) {
         NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:tipText];
+        attri.yy_font = IFFontRegular(14);
+        attri.yy_color = IFHexColor(@"#6E7073");
+        [attriText appendAttributedString:attri];
+    }
+    
+    if (self.tipAttriStr.length > 0) {
+        NSMutableAttributedString *tipAttri = [[NSMutableAttributedString alloc] initWithString:self.tipAttriStr];
+        tipAttri.yy_font = IFFontRegular(14);
+        tipAttri.yy_color = IFHexColor(@"#FF4400");
+        [tipAttri yy_setTextHighlightRange:tipAttri.yy_rangeOfAll color:IFHexColor(@"#FF4400") backgroundColor:nil tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+            if (self.userOperationBlock) {
+                self.userOperationBlock(0);
+            }
+        }];
+        [attriText appendAttributedString:tipAttri];
+    }
+    if (attriText.length > 0) {
         NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
         paraStyle.lineSpacing = self.infoLineSpace;
-        [attri addAttributes:@{NSParagraphStyleAttributeName:paraStyle} range:NSMakeRange(0, tipText.length)];
-        self.infoLabel.attributedText = attri;
+        [attriText addAttributes:@{NSParagraphStyleAttributeName:paraStyle} range:attriText.yy_rangeOfAll];
+        self.infoLabel.attributedText = attriText;
     }
 }
 
@@ -172,9 +193,9 @@
     return _imageView;
 }
 
-- (UILabel *)infoLabel {
+- (YYLabel *)infoLabel {
     if (!_infoLabel) {
-        _infoLabel = [UILabel new];
+        _infoLabel = [YYLabel new];
         _infoLabel.numberOfLines = 0;
         _infoLabel.textColor = UIColor.lightTextColor;
         _infoLabel.font = [UIFont systemFontOfSize:14];
@@ -251,6 +272,10 @@
             tempStr = @"if_empty_content";
             break;
             
+        case IFEmptyViewTypeGoHome:
+            tempStr = @"if_empty_content";
+            break;
+            
         default:
             break;
     }
@@ -265,7 +290,7 @@
             break;
             
         case IFEmptyViewTypeData:
-            tipStr = @"此处暂无内容，去看看别的";
+            tipStr = @"这里空荡荡的";
             break;
             
         case IFEmptyViewTypeSearch:
@@ -280,10 +305,22 @@
             tipStr = @"此处暂无内容，去看看别的";
             break;
             
+        case IFEmptyViewTypeGoHome:
+            tipStr = @"此处暂无内容，";
+            break;
+            
         default:
             break;
     }
     return tipStr;
+}
+
+- (NSString *)tipAttriStr {
+    NSString *tempStr = @"";
+    if (self.type == IFEmptyViewTypeGoHome) {
+        tempStr = @"去看看首页";
+    }
+    return tempStr;
 }
 
 

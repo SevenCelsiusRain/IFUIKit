@@ -75,8 +75,15 @@ typedef NS_ENUM(NSInteger, IFProgressHUDShowTipType) {
 
 /**
  lottie 动画
+ 默认 延迟1.5s 才会加载
  */
 + (IFProgressHUD *)showLottieLoadingText:(NSString *)text toView:(UIView *)view;
+
+/**
+ lottie 动画
+ graceTime 延迟时间
+ */
++ (IFProgressHUD *)showLottieLoadingText:(NSString *)text toView:(UIView *)view graceTime:(CGFloat)graceTime;
 
 
 /**

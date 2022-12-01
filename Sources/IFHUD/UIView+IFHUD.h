@@ -39,6 +39,8 @@
 
 - (void)if_showLottieLoadingView:(NSString *)message maskColor:(UIColor *)maskColor;
 
+- (void)if_showLottieLoadingView:(NSString *)message graceTime:(CGFloat)graceTime;
+
 /**
  隐藏loading
  */

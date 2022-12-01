@@ -14,7 +14,8 @@ typedef NS_ENUM(NSUInteger, IFEmptyViewType){
     IFEmptyViewTypeData,  // 无数据
     IFEmptyViewTypeDelete, // 内容被删除
     IFEmptyViewTypeSearch, // 搜索无结果
-    IFEmptyViewTypeEmpty // 空白页
+    IFEmptyViewTypeEmpty, // 空白页
+    IFEmptyViewTypeGoHome  // 无内容，返回首页
 };
 @interface IFEmptyView : UIView
 /*!距离顶部间距*/
@@ -51,7 +52,7 @@ typedef NS_ENUM(NSUInteger, IFEmptyViewType){
  一个元素时为居中按钮标题
  两个元素时为双按钮标题
  */
-- (void)setButtonTitles:(NSArray<NSString*>*)titles;
+//- (void)setButtonTitles:(NSArray<NSString*>*)titles;
 
 @end
 

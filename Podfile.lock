@@ -1,30 +1,39 @@
 PODS:
+  - IFCommonKit (0.0.1.4)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - SDWebImage (5.12.2):
     - SDWebImage/Core (= 5.12.2)
   - SDWebImage/Core (5.12.2)
+  - YYText (1.0.7)
 
 DEPENDENCIES:
+  - IFCommonKit
   - Masonry
   - MBProgressHUD (~> 1.2.0)
   - MJRefresh
   - SDWebImage
+  - YYText
 
 SPEC REPOS:
+  http://10.255.35.174/iov-ios/IFSpecs.git:
+    - IFCommonKit
   trunk:
     - Masonry
     - MBProgressHUD
     - MJRefresh
     - SDWebImage
+    - YYText
 
 SPEC CHECKSUMS:
+  IFCommonKit: 452ade0af8fa4ca6cd608de0c8056eb31f0e42c9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 4a6e8bfb481d36d8b4504579a5f4950d5e53dc41
+PODFILE CHECKSUM: 188ab722ef5825a170741dea8a1260126a05f7b0
 
 COCOAPODS: 1.11.3

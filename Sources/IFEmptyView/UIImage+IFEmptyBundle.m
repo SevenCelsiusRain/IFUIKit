@@ -8,7 +8,7 @@
 #import "UIImage+IFEmptyBundle.h"
 
 @implementation UIImage (IFEmptyBundle)
-+ (UIImage *)if_imageWithName:(NSString *)imageName {
++ (UIImage *)if_emptyImageWithName:(NSString *)imageName {
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"IFEmptyView"
                                                            ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
